@@ -1,0 +1,37 @@
+{
+  "name": "cclp-contracts",
+  "version": "1.0.0",
+  "description": "cCLP contracts",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "./node_modules/.bin/truffle compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cclp-project/cclp-contracts.git"
+  },
+  "keywords": [
+    "cclp",
+    "erc20"
+  ],
+  "contributors": [
+    {
+      "name": "Andres Junge",
+      "email": "andres.junge@consensys.net"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cclp-project/cclp-contracts/issues"
+  },
+  "homepage": "https://github.com/cclp-project/cclp-contracts#readme",
+  "devDependencies": {
+    "ganache-cli": "6.3.0",
+    "truffle": "5.0.5",
+    "truffle-hdwallet-provider": "1.0.4"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "2.1.3"
+  }
+}
