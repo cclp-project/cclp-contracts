@@ -1,7 +1,7 @@
 # cclp-contracts
 cCLP Contracts
 
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/cclp-project/cclp-contracts.png?columns=all)](https://waffle.io/cclp-project/cclp-contracts.png?utm_source=badge)
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/cclp-project/cclp-contracts.png?columns=all)](https://waffle.io/cclp-project/cclp-contracts?utm_source=badge)
 
 
 ## Install
