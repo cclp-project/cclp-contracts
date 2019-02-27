@@ -9,6 +9,7 @@ npm i
 
 ## Create secret
 Create a `.secret` file with the mnemonic
+Create a `.infura-key` file with your key from infura.io
 
 ## Compile
 ```
