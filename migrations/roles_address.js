@@ -1,5 +1,6 @@
-{
-    "mainnet":{
+module.exports= {
+    //Operations comitee multisig address
+    "mainnet":{ 
         "admin":        "0xfc759c2f6e9786e5741847c62f7e86ec73409b0a",
         "masterMinter": "0xfc759c2f6e9786e5741847c62f7e86ec73409b0a",
         "pauser":       "0xfc759c2f6e9786e5741847c62f7e86ec73409b0a",

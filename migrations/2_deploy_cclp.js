@@ -1,5 +1,5 @@
 let FiatToken = artifacts.require("./FiatToken.sol");
-let rolesAddress = require("./roles_address.json")
+let rolesAddress = require("./roles_address.js")
 
 module.exports = (deployer, network, accounts) => {
 
