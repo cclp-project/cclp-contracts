@@ -4,7 +4,8 @@ module.exports = (deployer, network, accounts) => {
 
     const name="cCLP Fiat Token"
     const symbol="cCLP"
-    const decimal = 18
-
-    deployer.deploy(FiatToken,name,symbol,decimal);
+    const decimals = 18
+    
+    deployer.deploy(FiatToken,name,symbol,decimals);
 }
+
