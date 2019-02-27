@@ -1,10 +1,26 @@
-var FiatToken = artifacts.require("./FiatToken.sol");
+let FiatToken = artifacts.require("./FiatToken.sol");
+let rolesAddress = require("./roles_address.json")
 
 module.exports = (deployer, network, accounts) => {
 
     const name="cCLP Fiat Token"
     const symbol="cCLP"
-    const decimal = 18
+    const decimals = 18
 
-    deployer.deploy(FiatToken,name,symbol,decimal);
+    let roles;
+    if(!rolesAddress[network]){
+        roles = {
+            "admin":        accounts[0],
+            "masterMinter": accounts[0],
+            "pauser":       accounts[0],
+            "blacklister":  accounts[0],
+            "owner":        accounts[0]
+        }
+    }
+    else {
+        roles = rolesAddress[network];
+    }
+    
+
+    deployer.deploy(FiatToken,name,symbol,decimals);
 }
