@@ -3,13 +3,21 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
+const Ganache = require("ganache-cli");
 //
 const fs = require('fs');
-const infuraKey = fs.readFileSync(".infura-key").toString().trim(); //Get your key on infura.io
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+const infuraKey = fs.readFileSync("./.infura-key").toString().trim(); //Get your key on infura.io
+const mnemonic = fs.readFileSync("./.secret").toString().trim();
+
+const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
 
 module.exports = {
   networks: {
+    in_memory: {
+      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: t_mnemonic}),
+      network_id: "*"
+    },
+
     development: {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)

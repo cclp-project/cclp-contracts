@@ -27,3 +27,9 @@ To run the deployment
 ```
 ./node_modules/.bin/truffle migrate
 ```
+
+Or you can test the deployment with the `in_memory` ganache provider
+```
+./node_modules/.bin/truffle migrate --network in_memory
+```
+
