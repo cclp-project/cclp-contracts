@@ -18,6 +18,14 @@ jobs:
             npm i
 
       - run:
+          name: fake-secrets
+          command: touch .infura-keys && touch .secret
+      
+      - run:
+          name: compile
+          command: npm run compile
+
+      - run:
           name: test
           command: npm test && npm run coverage
 
@@ -32,6 +40,6 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  build-and-test:
     jobs:
       - build
