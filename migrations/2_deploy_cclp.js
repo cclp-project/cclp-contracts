@@ -22,5 +22,5 @@ module.exports = (deployer, network, accounts) => {
     }
     
 
-    deployer.deploy(FiatToken,name,symbol,decimals);
+    deployer.deploy(FiatToken,name,symbol,decimals,roles.masterMinter);
 }
