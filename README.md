@@ -19,6 +19,11 @@ Create a `.infura-key` file with your key from infura.io
 npm run compile
 ```
 
+## Run the tests
+```
+npm test
+```
+
 ### Deploy to localhost
 You need a running version for a node on http://localhost:8545/. You can run one with 
 ```
@@ -35,4 +40,5 @@ Or you can test the deployment with the `in_memory` ganache provider
 ```
 ./node_modules/.bin/truffle migrate --network in_memory
 ```
+
 

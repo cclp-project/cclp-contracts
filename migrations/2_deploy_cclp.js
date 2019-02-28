@@ -8,6 +8,7 @@ module.exports = (deployer, network, accounts) => {
     const decimals = 18
 
     let roles;
+    //Provide defaults for all roles
     if(!rolesAddress[network]){
         roles = {
             "admin":        accounts[0],
