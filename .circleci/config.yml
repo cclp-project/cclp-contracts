@@ -19,7 +19,7 @@ jobs:
 
       - run:
           name: fake-secrets
-          command: touch .infura-keys && touch .secret
+          command: touch .infura-key && touch .secret
       
       - run:
           name: compile
