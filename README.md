@@ -1,6 +1,9 @@
 # cclp-contracts
 cCLP Contracts
 
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/cclp-project/cclp-contracts.png?columns=all)](https://waffle.io/cclp-project/cclp-contracts?utm_source=badge)
+
+
 ## Install
 
 ```
@@ -9,6 +12,7 @@ npm i
 
 ## Create secret
 Create a `.secret` file with the mnemonic
+Create a `.infura-key` file with your key from infura.io
 
 ## Compile
 ```
@@ -26,3 +30,9 @@ To run the deployment
 ```
 ./node_modules/.bin/truffle migrate
 ```
+
+Or you can test the deployment with the `in_memory` ganache provider
+```
+./node_modules/.bin/truffle migrate --network in_memory
+```
+

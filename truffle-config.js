@@ -3,13 +3,22 @@
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
-const infuraKey = "fj4jll3k.....";
+const Ganache = require("ganache-cli");
 //
 const fs = require('fs');
-const mnemonic = fs.readFileSync(".secret").toString().trim();
+const path = require('path');
+const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
+const mnemonic = fs.readFileSync(path.resolve(__dirname, '.secret')).toString().trim();
+
+const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
 
 module.exports = {
   networks: {
+    in_memory: {
+      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: t_mnemonic}),
+      network_id: "*"
+    },
+
     development: {
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)
@@ -29,7 +38,7 @@ module.exports = {
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
     // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/${infuraKey}`),
+      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`),
       // network_id: 3,       // Ropsten's id
       // gas: 5500000,        // Ropsten has a lower block limit than mainnet
       // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
