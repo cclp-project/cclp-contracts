@@ -12,6 +12,7 @@ contract MasterMinter is ERC20Mintable  {
 
     constructor(address _masterMinter) public {
         masterMinter = _masterMinter;
+        emit MasterMinterChanged(masterMinter);
     }
 
     /**
