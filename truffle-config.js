@@ -7,7 +7,7 @@ const Ganache = require("ganache-cli");
 //
 const fs = require('fs');
 const path = require('path');
-const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
+// const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
 const mnemonic = fs.readFileSync(path.resolve(__dirname, '.secret')).toString().trim();
 
 const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
