@@ -5,6 +5,11 @@ import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol";
 import "./MasterMinter.sol";
+
+
+/**
+@dev By the moment, the Owner address is the msg.sender
+ */
 contract FiatToken is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable, MasterMinter {
 
     constructor(

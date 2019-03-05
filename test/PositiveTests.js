@@ -55,5 +55,23 @@ contract("FiatToken Positive", accounts => {
         assert.equal(await instance.decimals(),18);
         assert.equal(await instance.symbol(),"cCLP");
     });
+
+    /* MasterMinter Contract */
+
+    it("Update MasterMinter and check event", async() => {
+        const {logs} = await instance.updateMasterMinter(accounts[3], {from: accounts[0]});
+        assert.equal(logs[0].event, 'MasterMinterChanged');
+    });
+
+    /* Check if the new MasterMinter works */
+      it("Add new Minter and Check if isMinter with the new MasterMinter", async() => {
+        await instance.addMinter(accounts[5], {from: accounts[3]})
+        assert.equal(await instance.isMinter(accounts[5]), true);
+    });
+
+    it("Remove Minter and Check if is not Minter", async() => {
+        await instance.removeMinter(accounts[5], {from: accounts[3]})
+        assert.equal(await instance.isMinter(accounts[5]), false);
+    });
 })
 
