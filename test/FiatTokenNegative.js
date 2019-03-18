@@ -56,6 +56,18 @@ contract("FiatToken Negative", accounts => {
         });
     });
 
+    describe("Fallback Function", () => { //Just to be sure
+       
+        it("Should not allow to Send ETH to contract", async () => {
+          
+            try {
+                await instance.send(100000000,{from:accounts[6]})
+            } catch (err) {
+                assert.isNotNull(err);
+            }
+        });
+    });
+
 
 
 });

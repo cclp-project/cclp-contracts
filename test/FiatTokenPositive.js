@@ -73,5 +73,6 @@ contract("FiatToken Positive", accounts => {
         await instance.removeMinter(accounts[5], {from: accounts[3]})
         assert.equal(await instance.isMinter(accounts[5]), false);
     });
+    
 })
 
