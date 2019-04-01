@@ -3,7 +3,6 @@ cCLP Contracts
 
 [![CircleCI](https://circleci.com/gh/cclp-project/cclp-contracts.svg?style=svg)](https://circleci.com/gh/cclp-project/cclp-contracts)
 [![codecov.io](https://codecov.io/gh/cclp-project/cclp-contracts/branch/master/graphs/badge.svg?branch=master)](http://codecov.io/github/cclp-project/cclp-contracts?branch=master)
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/cclp-project/cclp-contracts.png?columns=all)](https://waffle.io/cclp-project/cclp-contracts?utm_source=badge)
 
 
 ## Install
@@ -42,5 +41,15 @@ Or you can test the deployment with the `in_memory` ganache provider
 ```
 ./node_modules/.bin/truffle migrate --network in_memory
 ```
+
+## Roles in the contract
+| Role          |                  | (addr?) | 
+|---------------|------------------|---------------------|
+| proxyAdmin    | Admin of the proxy contract. Can do the upgrades to new version of token | |
+| masterMinter  | Can add and remove minters | |
+| pauser        | Can pause the contract     | |
+| blacklister   | Can blacklist addreses (block) | |
+| owner         | Owner of the token. Can set/change, masterMinter, pauser, blacklister and owner ||
+
 
 
