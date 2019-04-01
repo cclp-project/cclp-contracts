@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^ 0.5 .0;
 
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
@@ -18,11 +18,18 @@ contract FiatToken is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable, Master
         uint8 decimals,
         address masterMinterAddress
     )
-        MasterMinter(masterMinterAddress)
-        ERC20Burnable()
-        ERC20Mintable()
-        ERC20Detailed(name, symbol, decimals)
-        ERC20()
-        public
-    {}
+    MasterMinter(masterMinterAddress)
+    ERC20Burnable()
+    ERC20Mintable()
+    ERC20Detailed(name, symbol, decimals)
+    ERC20()
+    public {}
+
+    /**
+    * @dev Just to be sure at all
+     */
+    function () external payable {
+      revert();
+    }
+
 }
