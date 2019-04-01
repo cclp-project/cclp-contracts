@@ -1,6 +1,6 @@
 const FiatToken = artifacts.require("./FiatToken.sol");
 
-contract("FiatToken Minter", accounts => {
+contract("FiatToken MasterMinter", accounts => {
 
     beforeEach(async() => {
         instance = await FiatToken.deployed();
