@@ -29,8 +29,13 @@ contract FiatToken is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable, Pausab
     ERC20Detailed(name, symbol, decimals)
     ERC20()
     public {
-      addPauser(pauser);
-      renouncePauser();
+      //Add a pauser only make sense if pauser is distinct to deployer user (msg.sender), because deployer is a pauser by default in Open Zeppelling Pausable.sol
+      if(pauser!=msg.sender){
+        addPauser(pauser);
+        //deployer renounce to be a pauser after add other pauser account
+        renouncePauser();
+      }
+      
     }
 
     /**
