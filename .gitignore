@@ -3,3 +3,4 @@ node_modules/
 .infura-key
 coverage/
 coverage.json
+build/
