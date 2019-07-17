@@ -45,7 +45,7 @@ contract FiatToken is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable, Pausab
     * @param to The address to transfer to.
     * @param value The amount to be transferred.
     */
-    function transfer(address to, uint256 value) public whenNotPaused returns (bool) {
+    function transfer(address to, uint256 value) public whenNotPaused notBlacklisted(msg.sender) returns (bool) {
         ERC20.transfer(to, value);
         return true;
     }
