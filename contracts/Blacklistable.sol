@@ -1,12 +1,11 @@
 pragma solidity ^0.5.0;
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 
 /**
  * @title Blacklistable Token
  * @dev Allows accounts to be blacklisted by a "blacklister" role
 */
-contract Blacklistable is Ownable,Initializable {
+contract Blacklistable is Ownable {
 
     address public blacklister;
     mapping(address => bool) internal blacklisted;

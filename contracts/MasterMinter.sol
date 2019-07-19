@@ -1,11 +1,11 @@
 pragma solidity ^0.5.0;
 
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import "openzeppelin-eth/contracts/token/ERC20/ERC20Mintable.sol";
+import "openzeppelin-eth/contracts/ownership/Ownable.sol";
+import "zos-lib/contracts/Initializable.sol";
 
 
-contract MasterMinter is ERC20Mintable, Ownable ,Initializable {
+contract MasterMinter is ERC20Mintable, Ownable {
     
     event MasterMinterAdded(address indexed account);
     event MasterMinterChanged(address indexed newMasterMinter);
@@ -14,6 +14,7 @@ contract MasterMinter is ERC20Mintable, Ownable ,Initializable {
 
     function initialize (address _masterMinter) public initializer {
         masterMinter = _masterMinter;
+        ERC20Mintable.initialize(_masterMinter);
         emit MasterMinterChanged(masterMinter);
     }
 

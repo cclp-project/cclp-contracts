@@ -1,9 +1,9 @@
 pragma solidity ^0.5.0;
-import '@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol';
+import 'zos-lib/contracts/upgradeability/ProxyFactory.sol';
 /**
  * @dev A Proxy that supports FiatToken upgradeability
  */
-contract cCLPProxy is AdminUpgradeabilityProxy {
+contract cCLPProxy is ProxyFactory {
 
 
 }

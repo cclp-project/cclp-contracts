@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "openzeppelin-solidity/contracts/access/Roles.sol";
+import "openzeppelin-eth/contracts/access/Roles.sol";
 
 contract MinterRole {
     using Roles for Roles.Role;

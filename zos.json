@@ -1,0 +1,16 @@
+{
+  "zosversion": "2.2",
+  "contracts": {
+    "FiatToken": "FiatToken"
+  },
+  "dependencies": {},
+  "name": "cclp-contracts",
+  "version": "1.0.0",
+  "compiler": {
+    "manager": "zos",
+    "compilerSettings": {
+      "optimizer": {}
+    },
+    "solcVersion": "0.5.10"
+  }
+}

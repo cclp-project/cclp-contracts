@@ -1,7 +1,9 @@
 let FiatToken = artifacts.require("./FiatToken.sol");
+let Proxy = artifacts.require('@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol');
 let rolesAddress = require("./roles_address.js")
 
-module.exports = (deployer, network, accounts) => {
+
+module.exports = async (deployer, network, accounts) => {
 
     const name="cCLP Fiat Token"
     const symbol="cCLP"

@@ -7,7 +7,8 @@ const Ganache = require("ganache-cli");
 //
 const fs = require('fs');
 const path = require('path');
-// const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
+//const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
+infuraKey="f4342b42321e4dafa8b5bf9a4700a176"
 const mnemonic = fs.readFileSync(path.resolve(__dirname, '.secret')).toString().trim();
 
 const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
@@ -20,9 +21,12 @@ module.exports = {
     },
 
     local: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545/", 0,10);
+      },         // Standard Ethereum port (default: none)
+      network_id: "2342343",    // Any network (default: none),
+      gas: 8000000,
+      gasPrice: 20000000000
     },
     coverage: {
       host: "localhost",
@@ -30,6 +34,14 @@ module.exports = {
       port: 8555,         // <-- If you change this, also set the port option in .solcover.js.
       gas: 0xfffffffffff, // <-- Use this high gas value
       gasPrice: 0x01      // <-- Use this low gas price
+    },
+    rinkeby: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/f4342b42321e4dafa8b5bf9a4700a176", 0,10);
+      },
+      network_id: 4 ,
+      gas: 8000000000,
+      gasPrice: 0x01 
     },
     // Another network with more advanced options...
     // advanced: {
@@ -43,14 +55,14 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`,0,10),
+      network_id: 3,       // Ropsten's id
+      gas: 5500000,        // Ropsten has a lower block limit than mainnet
+      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+     }
 
     // Useful for private networks
     // private: {

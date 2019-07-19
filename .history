@@ -1,0 +1,60 @@
+let cclp = await FiatToken.new();
+let cclp = await FiatToken.new()
+cclp.abi
+cclp.abi.filter(x=>(x.name==initialize && x.inputs.length==6).signature
+cclp.abi.filter(x=>(x.name=='initialize' && x.inputs.length==6)).signature
+cclp.abi.filter(x=>(x.name=='initialize' && x.inputs.length==5))
+cclp.abi.filter(x=>(x.name=='initialize' ))
+cclp.abi.filter(x=>(x.name=='initialize' && x.inputs.length==6))
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6))
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6)).signature
+'cCLP'
+UnicodeEncoding encoding = new UnicodeEncoding();
+util.TextEncoder
+function toHexString(byteArray) {
+  return Array.from(byteArray, function(byte) {
+    return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+  }).join('')
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6)).signature
+web3.utils.toHex(18)
+web3.eth.abi.encodeFunctionSignature('initialize(string,string,uint8,address,address,address')
+web3.eth.abi.encodeFunctionSignature('initialize(string,string,uint8,address,address,address)')
+web3.eth.abi.encodeParameter('address',
+let accounts = web3.eth.getAccounts()
+accounts[0]
+accounts = await web3.eth.getAccounts()
+accounts[0]
+web3.eth.abi.encodeParameter('address',accounts[0])
+    const name="cCLP Fiat Token"
+    const symbol="cCLP"
+    const decimals = 18
+web3.eth.abi.encodeParameter('string',name)
+web3.eth.abi.encodeParameter('string',symbol)
+web3.eth.abi.encodeParameter('uint8',decimals)
+web3.eth.abi.encodeParameter('address',accounts[1])
+web3.eth.abi.encodeParameter('address',accounts[1]).substr(2)
+web3.eth.abi.encodeParameter('address',accounts[1]).substr(1)
+web3.eth.abi.encodeParameter('address',accounts[1]).substr(2)
+let roles = {}
+accounts[0]
+roles.admin = "hola"
+roles.admin = accounts[0]
+roles.masterMinter = accounts[0]
+roles.pauser = accounts[0]
+roles.blacklister = accounts[0]
+roles.owner = accounts[0]
+web3.eth.abi.encodeParameter('string',name).substr(2)
+web3.eth.abi.encodeParameter('string',symbol).substr(2)
+web3.eth.abi.encodeParameter('uint8',decimals).substr(2)
+web3.eth.abi.encodeParameter('address',roles.masterMinter).substr(2)
+web3.eth.abi.encodeParameter('address',roles.blacklister).substr(2)
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6))+web3.eth.abi.encodeParameter('string',name).substr(2)+
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6))+web3.eth.abi.encodeParameter('string',name).substr(2)+web3.eth.abi.encodeParameter('string',symbol).substr(2)+web3.eth.abi.encodeParameter('uint8',decimals).substr(2)+web3.eth.abi.encodeParameter('address',roles.masterMinter).substr(2)+web3.eth.abi.encodeParameter('address',roles.blacklister).substr(2)+web3.eth.abi.encodeParameter('address',roles.pauser).substr(2)
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6))[0]
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6))
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6)).signature
+cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6)).signature+web3.eth.abi.encodeParameter('string',name).substr(2)+web3.eth.abi.encodeParameter('string',symbol).substr(2)+web3.eth.abi.encodeParameter('uint8',decimals).substr(2)+web3.eth.abi.encodeParameter('address',roles.masterMinter).substr(2)+web3.eth.abi.encodeParameter('address',roles.blacklister).substr(2)+web3.eth.abi.encodeParameter('address',roles.pauser).substr(2)
+let functionData = cclp.abi.find(x=>(x.name=='initialize' && x.inputs.length==6)).signature+web3.eth.abi.encodeParameter('string',name).substr(2)+web3.eth.abi.encodeParameter('string',symbol).substr(2)+web3.eth.abi.encodeParameter('uint8',decimals).substr(2)+web3.eth.abi.encodeParameter('address',roles.masterMinter).substr(2)+web3.eth.abi.encodeParameter('address',roles.blacklister).substr(2)+web3.eth.abi.encodeParameter('address',roles.pauser).substr(2)
+functionData
+cclp.address
+let proxy = await AdminUpgradeabilityProxy.new(cclp.address,roles.admin,functionData)
