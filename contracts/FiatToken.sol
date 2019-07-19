@@ -1,41 +1,39 @@
 pragma solidity ^0.5.0;
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
+import "./ERC20DetailedInitializable.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Mintable.sol";
 import "openzeppelin-solidity/contracts/token/ERC20/ERC20Burnable.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
 import "./MasterMinter.sol";
 import "./Blacklistable.sol";
 
 /**
 @dev By the moment, the Owner address is the msg.sender
  */
-contract FiatToken is ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable, Pausable, MasterMinter, Blacklistable {
+contract FiatToken is Initializable , ERC20DetailedInitializable, ERC20Burnable, Pausable, MasterMinter, Blacklistable {
 
    
 
-    constructor(
-        string memory name,
+    /**
+    * @dev this function is needed by support upgreadability 
+     */
+    function initialize(string memory name,
         string memory symbol,
         uint8 decimals,
         address masterMinterAddress,
         address blacklisterAddress,
-        address pauser
-    )
-    MasterMinter(masterMinterAddress)
-    Blacklistable(blacklisterAddress)
-    ERC20Burnable()
-    ERC20Mintable()
-    ERC20Detailed(name, symbol, decimals)
-    ERC20()
-    public {
+        address pauser) public initializer  {
+
+      MasterMinter.initialize(masterMinterAddress);
+      Blacklistable.initialize(blacklisterAddress);
+      ERC20DetailedInitializable.initialize(name,symbol,decimals);
       //Add a pauser only make sense if pauser is distinct to deployer user (msg.sender), because deployer is a pauser by default in Open Zeppelling Pausable.sol
       if(pauser!=msg.sender){
         addPauser(pauser);
         //deployer renounce to be a pauser after add other pauser account
         renouncePauser();
       }
-      
     }
 
     /**

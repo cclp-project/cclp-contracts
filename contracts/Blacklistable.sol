@@ -1,11 +1,12 @@
 pragma solidity ^0.5.0;
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
 
 /**
  * @title Blacklistable Token
  * @dev Allows accounts to be blacklisted by a "blacklister" role
 */
-contract Blacklistable is Ownable {
+contract Blacklistable is Ownable,Initializable {
 
     address public blacklister;
     mapping(address => bool) internal blacklisted;
@@ -14,7 +15,7 @@ contract Blacklistable is Ownable {
     event UnBlacklisted(address indexed _account);
     event BlacklisterChanged(address indexed newBlacklister);
 
-    constructor(address _blacklister) public {
+    function initialize (address _blacklister) public initializer {
         blacklister = _blacklister;
         emit BlacklisterChanged(blacklister);
     }
