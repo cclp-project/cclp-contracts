@@ -1,12 +1,15 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 
 import "openzeppelin-eth/contracts/token/ERC20/ERC20Mintable.sol";
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 import "zos-lib/contracts/Initializable.sol";
 
-
+/**
+*   @title MasterMinter role, is that who is resposable of add and remove another minters
+*/
 contract MasterMinter is ERC20Mintable, Ownable {
-    
+
+
     event MasterMinterAdded(address indexed account);
     event MasterMinterChanged(address indexed newMasterMinter);
 
@@ -14,7 +17,7 @@ contract MasterMinter is ERC20Mintable, Ownable {
 
     function initialize (address _masterMinter) public initializer {
         masterMinter = _masterMinter;
-        ERC20Mintable.initialize(_masterMinter);
+        MinterRole.initialize(_masterMinter);
         emit MasterMinterChanged(masterMinter);
     }
 
@@ -43,10 +46,10 @@ contract MasterMinter is ERC20Mintable, Ownable {
     /**
      * @dev update the MasterMinter address, only the contract Owner can do that
     */
-    function updateMasterMinter(address _newMasterMinter) public onlyOwner { 
+    function updateMasterMinter(address _newMasterMinter) public onlyOwner {
         require(_newMasterMinter != address(0) && _newMasterMinter != msg.sender, "masterMinter has to be a real address and not the same");
         masterMinter = _newMasterMinter;
         emit MasterMinterChanged(masterMinter);
     }
-    
+
 }

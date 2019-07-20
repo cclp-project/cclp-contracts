@@ -25,5 +25,5 @@ module.exports = async (deployer, network, accounts) => {
     }
     
 
-    deployer.deploy(FiatToken,name,symbol,decimals,roles.masterMinter,roles.blacklister);
+    deployer.deploy(FiatToken,name,symbol,decimals,roles.masterMinter,roles.blacklister, roles.pauser);
 }

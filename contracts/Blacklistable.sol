@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.2;
 import "openzeppelin-eth/contracts/ownership/Ownable.sol";
 
 /**
@@ -22,8 +22,9 @@ contract Blacklistable is Ownable {
     /**
      * @dev Throws if called by any account other than the blacklister
     */
-    modifier onlyBlacklister() {
-        require(msg.sender == blacklister);
+    modifier onlyBlacklister(){
+        require(msg.sender == blacklister,
+        "Only Blacklister Role can call this method");
         _;
     }
 
@@ -32,14 +33,15 @@ contract Blacklistable is Ownable {
      * @param _account The address to check
     */
     modifier notBlacklisted(address _account) {
-        require(blacklisted[_account] == false);
+        require(blacklisted[_account] == false,
+        "this account is marked in our  blac-klist");
         _;
     }
 
     /**
      * @dev Checks if account is blacklisted
-     * @param _account The address to check    
-    */
+     * @param _account The address to check
+     */
     function isBlacklisted(address _account) public view returns (bool) {
         return blacklisted[_account];
     }
