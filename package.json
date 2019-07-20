@@ -4,8 +4,8 @@
   "description": "cCLP contracts",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/truffle test",
-    "compile": "./node_modules/.bin/truffle compile",
+    "test": "./node_modules/.bin/truffle test --compile-all",
+    "compile": "./node_modules/.bin/truffle compile --all",
     "coverage": "./node_modules/.bin/solidity-coverage"
   },
   "repository": {
@@ -30,12 +30,14 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "ganache-cli": "6.3.0",
-    "openzeppelin-eth": "^2.2.0",
     "openzeppelin-test-helpers": "^0.4.0",
     "solidity-coverage": "^0.5.11",
     "truffle": "5.0.5",
     "truffle-hdwallet-provider": "1.0.4",
     "zos-lib": "^2.4.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "openzeppelin-eth": "^2.2.0",
+    "solc": "^0.5.2"
+  }
 }

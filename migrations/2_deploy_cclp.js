@@ -1,10 +1,9 @@
 let FiatToken = artifacts.require("./FiatToken.sol");
-let Proxy = artifacts.require('@openzeppelin/upgrades/contracts/upgradeability/AdminUpgradeabilityProxy.sol');
-let rolesAddress = require("./roles_address.js")
+let rolesAddress = require("./roles_address.js");
 
 
 module.exports = async (deployer, network, accounts) => {
-
+    console.log("Migrations - cCLP - Setting up")
     const name="cCLP Fiat Token"
     const symbol="cCLP"
     const decimals = 18
@@ -25,5 +24,9 @@ module.exports = async (deployer, network, accounts) => {
     }
     
 
-    deployer.deploy(FiatToken,name,symbol,decimals,roles.masterMinter,roles.blacklister, roles.pauser);
+    await deployer.deploy(FiatToken);
+    let fiatToken = await FiatToken.deployed();
+    console.log("Migrations - FiatToken deployed");
+    await fiatToken.initialize(name,symbol,decimals,roles.masterMinter,roles.blacklister, roles.pauser, roles.owner);
+    console.log("Migrations - FiatToken initialized");
 }

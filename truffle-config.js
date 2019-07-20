@@ -1,22 +1,22 @@
 /**
- * cCLP
+ * cCLP Truffle config
+ * @dev Parameters are loaded from files: .infura-key and .secret . if they do not exist, then will be loaded from environment variables: INFURA_KEY and MNEMONIC_PRHASES
+ * Environment variables secrets are more frienly with 'circleci'
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Ganache = require("ganache-cli");
-//
 const fs = require('fs');
 const path = require('path');
-//const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
-infuraKey="f4342b42321e4dafa8b5bf9a4700a176"
-const mnemonic = fs.readFileSync(path.resolve(__dirname, '.secret')).toString().trim();
 
-const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
+let infuraKey = resolveParam(".infura-key","INFURA_KEY");
+let mnemonic = resolveParam(".secret","MNEMONIC_PRHASES");
+
 
 module.exports = {
   networks: {
     in_memory: {
-      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: t_mnemonic}),
+      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: mnemonic}),
       network_id: "*"
     },
 
@@ -24,7 +24,7 @@ module.exports = {
       provider: function() {
         return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545/", 0,10);
       },         // Standard Ethereum port (default: none)
-      network_id: "2342343",    // Any network (default: none),
+      network_id: "*",    // Any network (default: none),
       gas: 8000000,
       gasPrice: 20000000000
     },
@@ -37,11 +37,11 @@ module.exports = {
     },
     rinkeby: {
       provider: function() {
-        return new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/f4342b42321e4dafa8b5bf9a4700a176", 0,10);
+        return new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`, 0,10);
       },
-      network_id: 4 ,
-      gas: 8000000000,
-      gasPrice: 0x01 
+      network_id: 4 
+      //gas: 8000000000,
+      //gasPrice: 0x01 
     },
     // Another network with more advanced options...
     // advanced: {
@@ -74,21 +74,38 @@ module.exports = {
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
-    // timeout: 100000
+    timeout: 100000
   },
 
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.5.2",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
+      optimizer: {
+        enabled: true,
+        runs: 1000000000000
+      },
       //  evmVersion: "byzantium"
       // }
     }
   }
+}
+
+
+function resolveParam(fileName,variableName){
+  let output = "";
+  let filePath = path.resolve(__dirname, fileName);
+  if(fs.existsSync(filePath)){
+    try{
+      output = fs.readFileSync(filePath).toString().trim(); //Get your key on infura.io
+    }catch(error){
+      console.log(fileName+" file doesn't exist . Reading "+variableName+" variable");
+    }
+  }
+  if(!output || output.trim().length==0){
+    output=process.env[variableName];
+  }
+  return output;
 }

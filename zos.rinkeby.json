@@ -1,7 +1,300 @@
 {
-  "contracts": {},
+  "contracts": {
+    "FiatToken": {
+      "address": "0x1338fAfC059C184bec7FA2861C9436289Ef8Bce4",
+      "constructorCode": "608060405234801561001057600080fd5b50612c23806100206000396000f3fe",
+      "bodyBytecodeHash": "747d73dd38d129d4655bceaddac30d3dfd6324586669747f6f867d13ff6c98c7",
+      "localBytecodeHash": "dfa0580b733fb1290ead1f55adaea5c42bc4cb0fdfcc58aeea43a99ecfcfcb36",
+      "deployedBytecodeHash": "dfa0580b733fb1290ead1f55adaea5c42bc4cb0fdfcc58aeea43a99ecfcfcb36",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_mapping<t_uint256>": {
+          "id": "t_mapping<t_uint256>",
+          "valueType": "t_uint256",
+          "label": "mapping(key => uint256)",
+          "kind": "mapping"
+        },
+        "t_struct<Roles.Role>": {
+          "id": "t_struct<Roles.Role>",
+          "kind": "struct",
+          "label": "Roles.Role",
+          "members": [
+            {
+              "label": "bearer",
+              "astId": 423,
+              "type": "t_mapping<t_bool>",
+              "src": "150:32:4"
+            }
+          ]
+        },
+        "t_mapping<t_bool>": {
+          "id": "t_mapping<t_bool>",
+          "valueType": "t_bool",
+          "label": "mapping(key => bool)",
+          "kind": "mapping"
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        },
+        "t_string": {
+          "id": "t_string",
+          "kind": "elementary",
+          "label": "string"
+        },
+        "t_uint8": {
+          "id": "t_uint8",
+          "kind": "elementary",
+          "label": "uint8"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 1713,
+          "type": "t_bool",
+          "src": "757:24:15"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 1715,
+          "type": "t_bool",
+          "src": "876:25:15"
+        },
+        {
+          "contract": "Initializable",
+          "path": "zos-lib/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 1771,
+          "type": "t_array:50<t_uint256>",
+          "src": "1951:29:15"
+        },
+        {
+          "contract": "ERC20",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20.sol",
+          "label": "_balances",
+          "astId": 1112,
+          "type": "t_mapping<t_uint256>",
+          "src": "752:46:10"
+        },
+        {
+          "contract": "ERC20",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20.sol",
+          "label": "_allowed",
+          "astId": 1118,
+          "type": "t_mapping<t_uint256>",
+          "src": "805:66:10"
+        },
+        {
+          "contract": "ERC20",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20.sol",
+          "label": "_totalSupply",
+          "astId": 1120,
+          "type": "t_uint256",
+          "src": "878:28:10"
+        },
+        {
+          "contract": "ERC20",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20.sol",
+          "label": "______gap",
+          "astId": 1485,
+          "type": "t_array:50<t_uint256>",
+          "src": "7714:29:10"
+        },
+        {
+          "contract": "MinterRole",
+          "path": "openzeppelin-eth/contracts/access/roles/MinterRole.sol",
+          "label": "_minters",
+          "astId": 530,
+          "type": "t_struct<Roles.Role>",
+          "src": "271:27:5"
+        },
+        {
+          "contract": "MinterRole",
+          "path": "openzeppelin-eth/contracts/access/roles/MinterRole.sol",
+          "label": "______gap",
+          "astId": 629,
+          "type": "t_array:50<t_uint256>",
+          "src": "1081:29:5"
+        },
+        {
+          "contract": "ERC20Mintable",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Mintable.sol",
+          "label": "______gap",
+          "astId": 1639,
+          "type": "t_array:50<t_uint256>",
+          "src": "745:29:13"
+        },
+        {
+          "contract": "Ownable",
+          "path": "openzeppelin-eth/contracts/ownership/Ownable.sol",
+          "label": "_owner",
+          "astId": 984,
+          "type": "t_address",
+          "src": "302:22:9"
+        },
+        {
+          "contract": "Ownable",
+          "path": "openzeppelin-eth/contracts/ownership/Ownable.sol",
+          "label": "______gap",
+          "astId": 1095,
+          "type": "t_array:50<t_uint256>",
+          "src": "2262:29:9"
+        },
+        {
+          "contract": "ERC20Detailed",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol",
+          "label": "_name",
+          "astId": 1534,
+          "type": "t_string",
+          "src": "382:20:12"
+        },
+        {
+          "contract": "ERC20Detailed",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol",
+          "label": "_symbol",
+          "astId": 1536,
+          "type": "t_string",
+          "src": "408:22:12"
+        },
+        {
+          "contract": "ERC20Detailed",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol",
+          "label": "_decimals",
+          "astId": 1538,
+          "type": "t_uint8",
+          "src": "436:23:12"
+        },
+        {
+          "contract": "ERC20Detailed",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Detailed.sol",
+          "label": "______gap",
+          "astId": 1590,
+          "type": "t_array:50<t_uint256>",
+          "src": "1097:29:12"
+        },
+        {
+          "contract": "PauserRole",
+          "path": "openzeppelin-eth/contracts/access/roles/PauserRole.sol",
+          "label": "_pausers",
+          "astId": 649,
+          "type": "t_struct<Roles.Role>",
+          "src": "271:27:6"
+        },
+        {
+          "contract": "PauserRole",
+          "path": "openzeppelin-eth/contracts/access/roles/PauserRole.sol",
+          "label": "______gap",
+          "astId": 748,
+          "type": "t_array:50<t_uint256>",
+          "src": "1081:29:6"
+        },
+        {
+          "contract": "Pausable",
+          "path": "openzeppelin-eth/contracts/lifecycle/Pausable.sol",
+          "label": "_paused",
+          "astId": 767,
+          "type": "t_bool",
+          "src": "352:20:7"
+        },
+        {
+          "contract": "Pausable",
+          "path": "openzeppelin-eth/contracts/lifecycle/Pausable.sol",
+          "label": "______gap",
+          "astId": 848,
+          "type": "t_array:50<t_uint256>",
+          "src": "1429:29:7"
+        },
+        {
+          "contract": "MasterMinter",
+          "path": "contracts/MasterMinter.sol",
+          "label": "masterMinter",
+          "astId": 271,
+          "type": "t_address",
+          "src": "470:27:2"
+        },
+        {
+          "contract": "ERC20Burnable",
+          "path": "openzeppelin-eth/contracts/token/ERC20/ERC20Burnable.sol",
+          "label": "______gap",
+          "astId": 1523,
+          "type": "t_array:50<t_uint256>",
+          "src": "779:29:11"
+        },
+        {
+          "contract": "Blacklistable",
+          "path": "contracts/Blacklistable.sol",
+          "label": "blacklister",
+          "astId": 6,
+          "type": "t_address",
+          "src": "228:26:0"
+        },
+        {
+          "contract": "Blacklistable",
+          "path": "contracts/Blacklistable.sol",
+          "label": "blacklisted",
+          "astId": 10,
+          "type": "t_mapping<t_bool>",
+          "src": "260:45:0"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "MinterRole",
+            "path": "openzeppelin-eth/contracts/access/roles/MinterRole.sol",
+            "label": "_minters",
+            "astId": 530,
+            "type": "t_struct<Roles.Role>",
+            "src": "271:27:5"
+          },
+          {
+            "contract": "PauserRole",
+            "path": "openzeppelin-eth/contracts/access/roles/PauserRole.sol",
+            "label": "_pausers",
+            "astId": 649,
+            "type": "t_struct<Roles.Role>",
+            "src": "271:27:6"
+          }
+        ],
+        "storageDiff": []
+      }
+    }
+  },
   "solidityLibs": {},
   "proxies": {},
   "zosversion": "2.2",
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "openzeppelin-eth": {
+      "package": "0xa44bb80b290de8a465d17b14269df53cf0b9bf4f",
+      "version": "2.2.0"
+    }
+  }
 }
