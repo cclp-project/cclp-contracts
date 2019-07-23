@@ -1,5 +1,5 @@
 pragma solidity ^0.5.2;
-import "openzeppelin-eth/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
 
 /**
  * @title Blacklistable Token
@@ -14,9 +14,10 @@ contract Blacklistable is Ownable {
     event UnBlacklisted(address indexed _account);
     event BlacklisterChanged(address indexed newBlacklister);
 
-    function initialize (address _blacklister) public initializer {
+    function initialize (address _blacklister, address _owner) public initializer {
         blacklister = _blacklister;
         emit BlacklisterChanged(blacklister);
+        Ownable.initialize(_owner);
     }
 
     /**

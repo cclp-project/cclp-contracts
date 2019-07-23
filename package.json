@@ -32,12 +32,13 @@
     "ganache-cli": "6.3.0",
     "openzeppelin-test-helpers": "^0.4.0",
     "solidity-coverage": "^0.5.11",
-    "truffle": "5.0.5",
+    "truffle": "^5.0.5",
     "truffle-hdwallet-provider": "1.0.4",
     "zos-lib": "^2.4.1"
   },
   "dependencies": {
-    "openzeppelin-eth": "^2.2.0",
+    "@openzeppelin/contracts-ethereum-package": "^2.2.1-rc.0",
+    "@openzeppelin/upgrades": "^2.5.0",
     "solc": "^0.5.2"
   }
 }

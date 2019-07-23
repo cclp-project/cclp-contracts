@@ -1,9 +1,11 @@
 const FiatToken = artifacts.require("./FiatToken.sol");
+const MasterMinter = artifacts.require("./MasterMinter.sol");
 
 contract("FiatToken Positive", accounts => {
 
     beforeEach(async() => {
         instance = await FiatToken.deployed();
+        masterMinter = await MasterMinter.deployed();
     });
 
     /* Here starts the action */
@@ -11,13 +13,13 @@ contract("FiatToken Positive", accounts => {
     /* Mintable functions (Just for be sure)*/
     it("Check if the Minter is the msg.sender", async() => {
 
-        assert.equal(await instance.isMinter(accounts[0]), true);
+        assert.equal(await masterMinter.isMinter(accounts[0]), true);
     });
 
     it("Add new Minter and Check if isMinter", async() => {
 
-        await instance.addMinter(accounts[1])
-        assert.equal(await instance.isMinter(accounts[1]), true);
+        await masterMinter.addMinter(accounts[1])
+        assert.equal(await masterMinter.isMinter(accounts[1]), true);
     });
 
     it("Mint 300 tokens from new Minter (accounts[1]) to account2 and get balance, Transfer event",
@@ -59,19 +61,19 @@ contract("FiatToken Positive", accounts => {
     /* MasterMinter Contract */
 
     it("Update MasterMinter and check event", async() => {
-        const {logs} = await instance.updateMasterMinter(accounts[3], {from: accounts[0]});
+        const {logs} = await masterMinter.updateMasterMinter(accounts[3], {from: accounts[0]});
         assert.equal(logs[0].event, 'MasterMinterChanged');
     });
 
     /* Check if the new MasterMinter works */
       it("Add new Minter and Check if isMinter with the new MasterMinter", async() => {
-        await instance.addMinter(accounts[5], {from: accounts[3]})
-        assert.equal(await instance.isMinter(accounts[5]), true);
+        await masterMinter.addMinter(accounts[5], {from: accounts[3]})
+        assert.equal(await masterMinter.isMinter(accounts[5]), true);
     });
 
     it("Remove Minter and Check if is not Minter", async() => {
-        await instance.removeMinter(accounts[5], {from: accounts[3]})
-        assert.equal(await instance.isMinter(accounts[5]), false);
+        await masterMinter.removeMinter(accounts[5], {from: accounts[3]})
+        assert.equal(await masterMinter.isMinter(accounts[5]), false);
     });
     
 })

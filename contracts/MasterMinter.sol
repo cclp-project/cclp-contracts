@@ -1,13 +1,13 @@
 pragma solidity ^0.5.2;
 
-import "openzeppelin-eth/contracts/token/ERC20/ERC20Mintable.sol";
-import "openzeppelin-eth/contracts/ownership/Ownable.sol";
-import "zos-lib/contracts/Initializable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/access/roles/MinterRole.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
+import "@openzeppelin/upgrades/contracts/Initializable.sol";
 
 /**
 *   @title MasterMinter role, is that who is resposable of add and remove another minters
 */
-contract MasterMinter is ERC20Mintable, Ownable {
+contract MasterMinter is Ownable, MinterRole {
 
 
     event MasterMinterAdded(address indexed account);
@@ -15,9 +15,13 @@ contract MasterMinter is ERC20Mintable, Ownable {
 
     address public masterMinter;
 
-    function initialize (address _masterMinter) public initializer {
+    function initialize (
+        address _masterMinter,
+        address owner
+        ) public initializer {
         masterMinter = _masterMinter;
         MinterRole.initialize(_masterMinter);
+        Ownable.initialize(owner);
         emit MasterMinterChanged(masterMinter);
     }
 
