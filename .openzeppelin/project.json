@@ -12,8 +12,11 @@
   "compiler": {
     "manager": "openzeppelin",
     "compilerSettings": {
-      "optimizer": {}
+      "optimizer": {
+        "enabled": true,
+        "runs": "1000000000"
+      }
     },
-    "solcVersion": "0.5.10"
+    "solcVersion": "0.5.2"
   }
 }
