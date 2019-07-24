@@ -48,18 +48,14 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
 
 	}
 
-	/*function reInitialize(string memory name,
-		string memory symbol,
-		uint8 decimals,
-		MasterMinter _masterMinter,
-		Blacklistable _blacklister,
-		MasterPauser _pauser,
-		address owner) public onlyOwner {
-		
-		pauser.pause();
-		
-		}/*
 
+	/**
+	* @dev Just to be sure at all
+	*/
+	function () external payable {
+		revert();
+	}
+	
     /**
      * @dev Function to mint tokens
      * @param to The address that will receive the minted tokens.
@@ -129,17 +125,10 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
         _;
     }
 
-	
 
-	function helloworld() public pure returns(string memory){
-		return "hola mundo feliz";
-	}
 
 	event InitializationLog(
         string message
     );
 
-	event FallBackCallLog(
-		address sender
-	);
 }
