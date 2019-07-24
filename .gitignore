@@ -4,7 +4,6 @@ node_modules/
 coverage/
 coverage.json
 zos.dev-*.json
-!build/contracts/FiatToken.json
 .zos*
 .openzeppelin/.session
 .openzeppelin/.dev-*
