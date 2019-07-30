@@ -56,14 +56,14 @@ jobs:
           name: fake-secrets
           command: touch .infura-key && touch .secret
       - run:
-        name: deployRinkeby
-        command: |
-          openzeppelin upgrade --network rinkeby --from 0x77De151AA7e619CD887462fC41365F628CC4B203 --no-interactive  --all
+          name: deployRinkeby
+          command: |
+            openzeppelin upgrade --network rinkeby --from 0x77De151AA7e619CD887462fC41365F628CC4B203 --no-interactive  --all
 
       - save_cache:
-        key: dependency-cache-{{ checksum "package.json" }}
-        paths:
-          - ./node_modules
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
         
 
 
