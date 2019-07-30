@@ -28,8 +28,10 @@
   },
   "homepage": "https://github.com/cclp-project/cclp-contracts#readme",
   "devDependencies": {
+    "b58": "^4.0.3",
     "chai": "^4.2.0",
     "ganache-cli": "6.3.0",
+    "multihashes": "^0.4.15",
     "openzeppelin-test-helpers": "^0.4.0",
     "solidity-coverage": "^0.5.11",
     "truffle": "^5.0.5",
@@ -39,6 +41,8 @@
   "dependencies": {
     "@openzeppelin/contracts-ethereum-package": "^2.2.1-rc.0",
     "@openzeppelin/upgrades": "^2.5.0",
-    "solc": "^0.5.2"
+    "n": "^5.0.1",
+    "solc": "^0.5.2",
+    "stable": "^0.1.8"
   }
 }

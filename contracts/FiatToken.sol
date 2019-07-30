@@ -4,6 +4,7 @@ import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Deta
 import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Burnable.sol";
 import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
 import "@openzeppelin/upgrades/contracts/Initializable.sol";
+import  "./Types.sol";
 import "./MasterPauser.sol";
 import "./MasterMinter.sol";
 import "./Blacklistable.sol";
@@ -125,10 +126,33 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
         _;
     }
 
+	Types.Multihash public toSDocument;
 
+	function setToSDocument(
+		bytes32 digest,
+		uint8 hashFuntion,
+		uint8 size ) public onlyOwner
+	{
+		bytes32 oldDigest = toSDocument.digest;
+		uint8 oldHashFunction = toSDocument.hashFunction;
+		uint8 oldSize = toSDocument.size;
+
+		toSDocument = Types.Multihash(digest,hashFuntion,size);
+		emit MultihashChanged(
+			oldDigest,oldHashFunction,oldSize,
+			digest, hashFuntion, size);
+	}
 
 	event InitializationLog(
         string message
     );
 
+	event MultihashChanged(
+        bytes32 oldDigest,
+		uint8 oldHashFunction,
+		uint8 oldSize,
+        bytes32 newDigest,
+        uint8 newHashFunction,
+        uint8 newSize
+    );
 }
