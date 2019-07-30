@@ -37,9 +37,44 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+  deployIntegration:
+    working_directory: ~/repo
+    docker:
+      - image: chech0x/eth-truffle-dev:1.1.0
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - dependencies-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-dependencies
+          command: |
+            npm i
+            
+      - run:
+          name: fake-secrets
+          command: touch .infura-key && touch .secret
+      - run:
+        name: deployRinkeby
+        command: |
+          openzeppelin upgrade --network rinkeby --from 0x77De151AA7e619CD887462fC41365F628CC4B203 --no-interactive  --all
+
+      - save_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+        paths:
+          - ./node_modules
+        
+
 
 workflows:
   version: 2
   build-and-test:
     jobs:
       - build
+      - deployIntegration
+        requires: 
+          - build
+        filters:
+          branches:
+            only: develop
