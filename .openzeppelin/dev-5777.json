@@ -1,7 +1,7 @@
 {
   "contracts": {
     "Blacklistable": {
-      "address": "0x3Be2274432f88f8DA82bD2D7C30610B52689414f",
+      "address": "0xad444EffF590cC0aAe22577847B1Df81E1432870",
       "constructorCode": "608060405234801561001057600080fd5b50610aeb806100206000396000f3fe",
       "bodyBytecodeHash": "4505278598e851cff58f1a85e91bfea0092cfeaee7bce3652ce98ecce496f844",
       "localBytecodeHash": "891210e1cd25dd35cb928ccb695f24db6691a1cb4c3c5ab78abaf4c7123648dd",
@@ -103,7 +103,7 @@
       }
     },
     "MasterMinter": {
-      "address": "0xDE3c832A2532A073F5960ad2c3bF0908F2d682cE",
+      "address": "0xd558d83b781eb8a6e5f4Db89722cE32a6a1AD422",
       "constructorCode": "608060405234801561001057600080fd5b50610db3806100206000396000f3fe",
       "bodyBytecodeHash": "98970091f6f14c79500ab46b609d7239824d1aabc663d6401a19573a06b72e72",
       "localBytecodeHash": "7df9c9064b75f0edceaf59ef1fea2196b7be1777f6d5c4d0bee1fca7348488e5",
@@ -212,7 +212,7 @@
           "contract": "MasterMinter",
           "path": "contracts/MasterMinter.sol",
           "label": "masterMinter",
-          "astId": 1785,
+          "astId": 1789,
           "type": "t_address",
           "src": "528:27:13"
         }
@@ -226,7 +226,7 @@
       }
     },
     "MasterPauser": {
-      "address": "0xb8E0fA795Ef366d1c8Cd48492c9c8Fc317cb4618",
+      "address": "0x0fE42be0D27a36d08aEf05a64360D9f9B5D2813e",
       "constructorCode": "608060405234801561001057600080fd5b5061103e806100206000396000f3fe",
       "bodyBytecodeHash": "3dc68f08943e2a8f63f94fc1605db0075b39c4bf284bbd592c26fb364c6fed90",
       "localBytecodeHash": "ef551148d2d9a4d1d8b3cb2dbd6c5ca7d53291b0661b73e3ca18a0fd16c9feb9",
@@ -351,7 +351,7 @@
           "contract": "MasterPauser",
           "path": "contracts/MasterPauser.sol",
           "label": "masterPauser",
-          "astId": 1901,
+          "astId": 1905,
           "type": "t_address",
           "src": "523:27:14"
         }
@@ -365,7 +365,7 @@
       }
     },
     "FiatToken": {
-      "address": "0x760bbbbDe4e1049C070994Bf7bD57A7673ECFbB9",
+      "address": "0x2D8453D670eD26416588d536Bd30001Ee0507768",
       "constructorCode": "608060405234801561001057600080fd5b5061273a806100206000396000f3fe",
       "bodyBytecodeHash": "a7c3101a4044efaee158a5bdc8d41121162e105cf6f1f4ed5611b772ee1fc908",
       "localBytecodeHash": "950ffe7f2bd053e7b62d602aec7c9ae0a18cb08a9f363e7b5b2d2761c5f73e79",
@@ -655,37 +655,37 @@
   "proxies": {
     "cclp-contracts/Blacklistable": [
       {
-        "address": "0x7802831b0D6415a466E17d680A7739b17BEE92eE",
+        "address": "0xd888C2A9FFEB403DBca240Af669dcB8E4eACb77B",
         "version": "1.0.0",
-        "implementation": "0x3Be2274432f88f8DA82bD2D7C30610B52689414f",
-        "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
+        "implementation": "0xad444EffF590cC0aAe22577847B1Df81E1432870",
+        "admin": "0xABFFaD5521E7FE299339428f3e5580A514646b85",
         "kind": "Upgradeable"
       }
     ],
     "cclp-contracts/MasterMinter": [
       {
-        "address": "0x456B85109e595726DBCa9C6ba17Ac0DEde978a8C",
+        "address": "0x62bDf3c0eA8ad43171f39dbbE6CC46EC3B42C80f",
         "version": "1.0.0",
-        "implementation": "0xDE3c832A2532A073F5960ad2c3bF0908F2d682cE",
-        "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
+        "implementation": "0xd558d83b781eb8a6e5f4Db89722cE32a6a1AD422",
+        "admin": "0xABFFaD5521E7FE299339428f3e5580A514646b85",
         "kind": "Upgradeable"
       }
     ],
     "cclp-contracts/MasterPauser": [
       {
-        "address": "0x3eD0A328AFcCF4df6A992bd2af0A48AE753FC850",
+        "address": "0x16778f894Ce88153CAeBF6eD58A499B9cbC94F1E",
         "version": "1.0.0",
-        "implementation": "0xb8E0fA795Ef366d1c8Cd48492c9c8Fc317cb4618",
-        "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
+        "implementation": "0x0fE42be0D27a36d08aEf05a64360D9f9B5D2813e",
+        "admin": "0xABFFaD5521E7FE299339428f3e5580A514646b85",
         "kind": "Upgradeable"
       }
     ],
     "cclp-contracts/FiatToken": [
       {
-        "address": "0x5682911Ee63e9f05895BA1f31578E5D00Ee3e8F2",
+        "address": "0x4f3a2D0815fA41D3Ada1F2bbfFB7D2A85C20cF36",
         "version": "1.0.0",
-        "implementation": "0x760bbbbDe4e1049C070994Bf7bD57A7673ECFbB9",
-        "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
+        "implementation": "0x2D8453D670eD26416588d536Bd30001Ee0507768",
+        "admin": "0xABFFaD5521E7FE299339428f3e5580A514646b85",
         "kind": "Upgradeable"
       }
     ]
@@ -693,6 +693,6 @@
   "manifestVersion": "2.2",
   "version": "1.0.0",
   "proxyAdmin": {
-    "address": "0x726A759E03DB18047615b7470E4102A987caD499"
+    "address": "0xABFFaD5521E7FE299339428f3e5580A514646b85"
   }
 }

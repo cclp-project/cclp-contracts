@@ -3,7 +3,6 @@
   "contracts": {
     "Blacklistable": "Blacklistable",
     "MasterMinter": "MasterMinter",
-    "MasterPauser": "MasterPauser",
     "FiatToken": "FiatToken"
   },
   "dependencies": {},
