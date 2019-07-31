@@ -1,28 +1,30 @@
 /**
- * cCLP
+ * cCLP Truffle config
+ * @dev Parameters are loaded from files: .infura-key and .secret . if they do not exist, then will be loaded from environment variables: INFURA_KEY and MNEMONIC_PRHASES
+ * Environment variables secrets are more frienly with 'circleci'
  */
 
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Ganache = require("ganache-cli");
-//
 const fs = require('fs');
 const path = require('path');
-// const infuraKey = fs.readFileSync(path.resolve(__dirname, '.infura-key')).toString().trim(); //Get your key on infura.io
-const mnemonic = fs.readFileSync(path.resolve(__dirname, '.secret')).toString().trim();
 
-const t_mnemonic = "income shed amused zoo false occur danger already case sound unit sense"
+let infuraKey = resolveParam(".infura-key","INFURA_KEY");
+let mnemonic = resolveParam(".secret","MNEMONIC_PRHASES");
+
 
 module.exports = {
   networks: {
     in_memory: {
-      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: t_mnemonic}),
+      provider: ()=> new Ganache.provider({total_accounts: 25, mnemonic: mnemonic}),
       network_id: "*"
     },
 
     local: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
+      provider: function() {
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545", 0,10);
+      },         // Standard Ethereum port (default: none)
+      network_id: "*"    // Any network (default: none),
     },
     coverage: {
       host: "localhost",
@@ -30,6 +32,14 @@ module.exports = {
       port: 8555,         // <-- If you change this, also set the port option in .solcover.js.
       gas: 0xfffffffffff, // <-- Use this high gas value
       gasPrice: 0x01      // <-- Use this low gas price
+    },
+    rinkeby: {
+      provider: function() {
+        return new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`, 0,10);
+      },
+      network_id: 4 
+      //gas: 8000000000,
+      //gasPrice: 0x01 
     },
     // Another network with more advanced options...
     // advanced: {
@@ -43,14 +53,15 @@ module.exports = {
 
     // Useful for deploying to a public network.
     // NB: It's important to wrap the provider as a function.
-    // ropsten: {
-      // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`),
-      // network_id: 3,       // Ropsten's id
-      // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-    // },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`,0,10),
+      network_id: 3,       // Ropsten's id
+      gas: 5000029,       // Ropsten has a lower block limit than mainnet
+      gasPrice: 20000000000,  // 20 gwei (in wei) (default: 100 gwei) 
+ //     confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+ //     timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+ //     skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+     }
 
     // Useful for private networks
     // private: {
@@ -62,21 +73,38 @@ module.exports = {
 
   // Set default mocha options here, use special reporters etc.
   mocha: {
-    // timeout: 100000
+    timeout: 100000
   },
 
   // Configure your compilers
   compilers: {
     solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.5.2",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
+      optimizer: {
+        enabled: true,
+        runs: 1000000000000
+      },
       //  evmVersion: "byzantium"
       // }
     }
   }
+}
+
+
+function resolveParam(fileName,variableName){
+  let output = "";
+  let filePath = path.resolve(__dirname, fileName);
+  if(fs.existsSync(filePath)){
+    try{
+      output = fs.readFileSync(filePath).toString().trim(); //Get your key on infura.io
+    }catch(error){
+      console.log(fileName+" file doesn't exist . Reading "+variableName+" variable");
+    }
+  }
+  if(!output || output.trim().length==0){
+    output=process.env[variableName];
+  }
+  return output;
 }

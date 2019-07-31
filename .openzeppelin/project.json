@@ -1,0 +1,22 @@
+{
+  "manifestVersion": "2.2",
+  "contracts": {
+    "Blacklistable": "Blacklistable",
+    "MasterMinter": "MasterMinter",
+    "MasterPauser": "MasterPauser",
+    "FiatToken": "FiatToken"
+  },
+  "dependencies": {},
+  "name": "cclp-contracts",
+  "version": "1.0.0",
+  "compiler": {
+    "manager": "openzeppelin",
+    "compilerSettings": {
+      "optimizer": {
+        "enabled": true,
+        "runs": "1000000000"
+      }
+    },
+    "solcVersion": "0.5.2"
+  }
+}

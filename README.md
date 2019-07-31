@@ -53,3 +53,25 @@ Or you can test the deployment with the `in_memory` ganache provider
 
 
 
+## Upgradeable Proxies 
+
+### Manual deployment 
+
+We must get **openzeppelin sdk client** and the do something like that
+
+```bash
+echo "setting roles accounts"
+myDeployerAccount="0x....."
+owner="0x......"
+masterMinterAddress="0x....."
+blackListerAddress="0x....."
+pauserMasterAddress="0x...."
+
+blacklistable=$(openzeppelin create Blacklistable --network local --from $myDeployerAccount --init initialize --args "$blackListerAddress,$owner")
+
+masterMinter=$(openzeppelin create MasterMinter --network local --from $myDeployerAccount --init initialize --args "$masterMinterAddress,$owner")
+
+masterPauser=$(openzeppelin create MasterPauser --network local --from $myDeployerAccount --init initialize --args "$pauserMasterAddress,$owner")
+
+fiatToken=$(openzeppelin create FiatToken --network local --from $myDeployerAccount --init initialize --args "\"cCLP Fiat Token\",\"cCLP\",18,$masterMinter,$blacklistable,$masterPauser,$owner")
+```

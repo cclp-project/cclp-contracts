@@ -1,8 +1,13 @@
 let FiatToken = artifacts.require("./FiatToken.sol");
-let rolesAddress = require("./roles_address.js")
+let MasterMinter = artifacts.require("./MasterMinter.sol");
+let Blacklistable = artifacts.require("./Blacklistable.sol");
+let MasterPauser = artifacts.require("./MasterPauser.sol");
+let Types = artifacts.require("./Types.sol");
+let rolesAddress = require("./roles_address.js");
 
-module.exports = (deployer, network, accounts) => {
 
+module.exports = async (deployer, network, accounts) => {
+    console.log("Migrations - cCLP - Setting up")
     const name="cCLP Fiat Token"
     const symbol="cCLP"
     const decimals = 18
@@ -22,6 +27,21 @@ module.exports = (deployer, network, accounts) => {
         roles = rolesAddress[network];
     }
     
+    await deployer.deploy(Blacklistable);
+    let blacklister = await Blacklistable.deployed();
+    await blacklister.initialize(roles.blacklister,roles.owner);
 
-    deployer.deploy(FiatToken,name,symbol,decimals,roles.masterMinter,roles.blacklister);
+    await deployer.deploy(MasterMinter);
+    let masterMinter = await MasterMinter.deployed();
+    await masterMinter.initialize(roles.masterMinter,roles.owner);
+
+    await deployer.deploy(MasterPauser);
+    let masterPauser = await MasterPauser.deployed();
+    await masterPauser.initialize(roles.pauser,roles.owner);
+
+    await deployer.deploy(FiatToken);
+    let fiatToken = await FiatToken.deployed();
+    await fiatToken.initialize(name,symbol,decimals,masterMinter.address,blacklister.address,masterPauser.address,roles.owner);
+
+    console.log("fiatToken initialized");
 }
