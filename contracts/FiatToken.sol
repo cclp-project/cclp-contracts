@@ -5,9 +5,9 @@ import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Burn
 import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
 import "@openzeppelin/upgrades/contracts/Initializable.sol";
 import  "./Types.sol";
-import "./MasterPauser.sol";
 import "./MasterMinter.sol";
 import "./Blacklistable.sol";
+import "./Pausable.sol";
 
 
 
@@ -15,11 +15,10 @@ import "./Blacklistable.sol";
 * @title FiatToken contract
 * @dev This sontact was meant to work as a stable coin with upgradeability support.
 */
-contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
+contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable, Pausable{
 
 	Blacklistable public blacklister;
 	MasterMinter public masterMinter;
-	MasterPauser public pauser;
 
 	/**
 	* @dev this function is needed by support uppgradeability
@@ -28,7 +27,7 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
 	* @param decimals : uint8. Decimals fractions that may have a token unit.
 	* @param _masterMinter : MasterMinter.
 	* @param _blacklister : Blacklistable.
-	* @param _pauser : MasterPauser.
+	* @param _pauserRole : address.
 	* @param owner : address.
 	*/
 	function initialize(string memory name,
@@ -36,12 +35,13 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
 		uint8 decimals,
 		MasterMinter _masterMinter,
 		Blacklistable _blacklister,
-		MasterPauser _pauser,
+		address _pauserRole,
 		address owner) public initializer  {
 		ERC20Detailed.initialize(name,symbol,decimals);
  		masterMinter = _masterMinter;
-		pauser = _pauser;
 		emit InitializationLog("After Master Minter initialization");
+		Pausable.initialize(_pauserRole);
+		emit InitializationLog("After Initialize Pausable");
 		blacklister = _blacklister;
 		emit InitializationLog("After Black Lister setting");
 		Ownable.initialize(owner);
@@ -75,22 +75,7 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
 
 
 
-	/**
-     * @dev Modifier to make a function callable only when the contract is not paused.
-     */
-    modifier whenNotPaused() {
-        require(!pauser.paused(),"This contract is paused");
-        _;
-    }
 
-	modifier whenPaused(){
-		require(pauser.paused(),"This contract is not paused");
-        _;
-	}
-
-	function paused() public view returns(bool){
-		return pauser.paused();
-	}
 
 	/**
 	* @dev overriding ERC20.transfer with modifier whenNotPaused
@@ -155,4 +140,6 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable{
         uint8 newHashFunction,
         uint8 newSize
     );
+
+
 }

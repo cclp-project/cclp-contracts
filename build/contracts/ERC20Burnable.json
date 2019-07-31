@@ -376,7 +376,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2081,
+                          "referencedDeclaration": 2182,
                           "src": "423:3:7",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",

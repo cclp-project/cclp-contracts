@@ -1,7 +1,7 @@
 let FiatToken = artifacts.require("./FiatToken.sol");
 let MasterMinter = artifacts.require("./MasterMinter.sol");
 let Blacklistable = artifacts.require("./Blacklistable.sol");
-let MasterPauser = artifacts.require("./MasterPauser.sol");
+
 let Types = artifacts.require("./Types.sol");
 let rolesAddress = require("./roles_address.js");
 
@@ -35,13 +35,11 @@ module.exports = async (deployer, network, accounts) => {
     let masterMinter = await MasterMinter.deployed();
     await masterMinter.initialize(roles.masterMinter,roles.owner);
 
-    await deployer.deploy(MasterPauser);
-    let masterPauser = await MasterPauser.deployed();
-    await masterPauser.initialize(roles.pauser,roles.owner);
+
 
     await deployer.deploy(FiatToken);
     let fiatToken = await FiatToken.deployed();
-    await fiatToken.initialize(name,symbol,decimals,masterMinter.address,blacklister.address,masterPauser.address,roles.owner);
+    await fiatToken.initialize(name,symbol,decimals,masterMinter.address,blacklister.address,roles.pauser,roles.owner);
 
     console.log("fiatToken initialized");
 }
