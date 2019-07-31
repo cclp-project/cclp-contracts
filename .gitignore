@@ -3,3 +3,8 @@ node_modules/
 .infura-key
 coverage/
 coverage.json
+zos.dev-*.json
+.zos*
+.openzeppelin/.session
+.openzeppelin/.dev-*
+.history

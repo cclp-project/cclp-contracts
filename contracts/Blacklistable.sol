@@ -1,5 +1,5 @@
-pragma solidity ^0.5.0;
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+pragma solidity ^0.5.2;
+import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
 
 /**
  * @title Blacklistable Token
@@ -14,16 +14,18 @@ contract Blacklistable is Ownable {
     event UnBlacklisted(address indexed _account);
     event BlacklisterChanged(address indexed newBlacklister);
 
-    constructor(address _blacklister) public {
+    function initialize (address _blacklister, address _owner) public initializer {
         blacklister = _blacklister;
         emit BlacklisterChanged(blacklister);
+        Ownable.initialize(_owner);
     }
 
     /**
      * @dev Throws if called by any account other than the blacklister
     */
-    modifier onlyBlacklister() {
-        require(msg.sender == blacklister);
+    modifier onlyBlacklister(){
+        require(msg.sender == blacklister,
+        "Only Blacklister Role can call this method");
         _;
     }
 
@@ -32,14 +34,15 @@ contract Blacklistable is Ownable {
      * @param _account The address to check
     */
     modifier notBlacklisted(address _account) {
-        require(blacklisted[_account] == false);
+        require(blacklisted[_account] == false,
+        "this account is marked in our  blac-klist");
         _;
     }
 
     /**
      * @dev Checks if account is blacklisted
-     * @param _account The address to check    
-    */
+     * @param _account The address to check
+     */
     function isBlacklisted(address _account) public view returns (bool) {
         return blacklisted[_account];
     }

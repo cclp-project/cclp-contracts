@@ -1,17 +1,19 @@
 const FiatToken = artifacts.require("./FiatToken.sol");
+const MasterMinter = artifacts.require("./MasterMinter.sol");
 
 contract("FiatToken Negative", accounts => {
 
     beforeEach(async () => {
         instance = await FiatToken.deployed();
+        masterMinter = await MasterMinter.deployed();
     });
 
     describe("Minter Functions", () => {
         
         it("should not allow to add Mint from no MasterMinter", async () => {
-            assert.equal(false, await instance.isMinter(accounts[2]))
+            assert.equal(false, await masterMinter.isMinter(accounts[2]))
             try {
-                await instance.addMinter(accounts[3], {
+                await masterMinter.addMinter(accounts[3], {
                     from: accounts[4]
                 });
             } catch (err) {
@@ -20,7 +22,7 @@ contract("FiatToken Negative", accounts => {
         });
         
         it("should not allow to Mint from no Minter account", async () => {
-            assert.equal(false, await instance.isMinter(accounts[2]))
+            assert.equal(false, await masterMinter.isMinter(accounts[2]))
             try {
                 await instance.Mint(accounts[3], {
                     from: accounts[2]
@@ -33,8 +35,8 @@ contract("FiatToken Negative", accounts => {
         describe("ERC20 functions", () => { //Just to be sure
           
             it("AddMinter, Mint 100 tokens and try to transfer 101 tokens, should revert", async () => {
-                await instance.addMinter(accounts[1], {from: accounts[0]}) // AddMinter
-                assert.equal(await instance.isMinter(accounts[1]), true); // Check if is Minter
+                await masterMinter.addMinter(accounts[1], {from: accounts[0]}) // AddMinter
+                assert.equal(await masterMinter.isMinter(accounts[1]), true); // Check if is Minter
                 await instance.mint(accounts[2], 100, {from: accounts[1]}); //Mint 100 tokens to accounts[2]
                 try {
                     await instance.transfer(accounts[3], 101, {from: accounts[2]}); //Transfer to accounts[3]
