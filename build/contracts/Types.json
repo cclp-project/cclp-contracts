@@ -3,21 +3,21 @@
   "contractName": "Types",
   "source": "pragma solidity ^0.5.2;\nimport '@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol';\n/**\n@dev Code based on https://github.com/saurfang/ipfs-multihash-on-solidity\n */\nlibrary Types{\n    struct Multihash{\n        bytes32 digest ;\n        uint8 hashFunction;\n        uint8 size;\n    }\n\n}",
   "sourcePath": "contracts/Types.sol",
-  "sourceMap": "185:118:17:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
-  "deployedSourceMap": "185:118:17:-;;;;;;;;",
+  "sourceMap": "185:118:13:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
+  "deployedSourceMap": "185:118:13:-;;;;;;;;",
   "abi": [],
   "ast": {
     "absolutePath": "contracts/Types.sol",
     "exportedSymbols": {
       "Types": [
-        2167
+        2016
       ]
     },
-    "id": 2168,
+    "id": 2017,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2158,
+        "id": 2007,
         "literals": [
           "solidity",
           "^",
@@ -25,16 +25,16 @@
           ".2"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:17"
+        "src": "0:23:13"
       },
       {
         "absolutePath": "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol",
         "file": "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol",
-        "id": 2159,
+        "id": 2008,
         "nodeType": "ImportDirective",
-        "scope": 2168,
-        "sourceUnit": 560,
-        "src": "24:78:17",
+        "scope": 2017,
+        "sourceUnit": 341,
+        "src": "24:78:13",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -44,24 +44,24 @@
         "contractKind": "library",
         "documentation": "@dev Code based on https://github.com/saurfang/ipfs-multihash-on-solidity",
         "fullyImplemented": true,
-        "id": 2167,
+        "id": 2016,
         "linearizedBaseContracts": [
-          2167
+          2016
         ],
         "name": "Types",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Types.Multihash",
-            "id": 2166,
+            "id": 2015,
             "members": [
               {
                 "constant": false,
-                "id": 2161,
+                "id": 2010,
                 "name": "digest",
                 "nodeType": "VariableDeclaration",
-                "scope": 2166,
-                "src": "230:14:17",
+                "scope": 2015,
+                "src": "230:14:13",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -69,10 +69,10 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2160,
+                  "id": 2009,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
-                  "src": "230:7:17",
+                  "src": "230:7:13",
                   "typeDescriptions": {
                     "typeIdentifier": "t_bytes32",
                     "typeString": "bytes32"
@@ -83,11 +83,11 @@
               },
               {
                 "constant": false,
-                "id": 2163,
+                "id": 2012,
                 "name": "hashFunction",
                 "nodeType": "VariableDeclaration",
-                "scope": 2166,
-                "src": "255:18:17",
+                "scope": 2015,
+                "src": "255:18:13",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -95,10 +95,10 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 2162,
+                  "id": 2011,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "255:5:17",
+                  "src": "255:5:13",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint8",
                     "typeString": "uint8"
@@ -109,11 +109,11 @@
               },
               {
                 "constant": false,
-                "id": 2165,
+                "id": 2014,
                 "name": "size",
                 "nodeType": "VariableDeclaration",
-                "scope": 2166,
-                "src": "283:10:17",
+                "scope": 2015,
+                "src": "283:10:13",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -121,10 +121,10 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 2164,
+                  "id": 2013,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
-                  "src": "283:5:17",
+                  "src": "283:5:13",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint8",
                     "typeString": "uint8"
@@ -136,16 +136,16 @@
             ],
             "name": "Multihash",
             "nodeType": "StructDefinition",
-            "scope": 2167,
-            "src": "204:96:17",
+            "scope": 2016,
+            "src": "204:96:13",
             "visibility": "public"
           }
         ],
-        "scope": 2168,
-        "src": "185:118:17"
+        "scope": 2017,
+        "src": "185:118:13"
       }
     ],
-    "src": "0:303:17"
+    "src": "0:303:13"
   },
   "bytecode": "0x604c602c600b82828239805160001a60731460008114601c57601e565bfe5b5030600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea165627a7a72305820baa6a030c04507e9c9f6e17eac816392504cc2c73d645afe375d5135a4e02d460029",
   "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea165627a7a72305820baa6a030c04507e9c9f6e17eac816392504cc2c73d645afe375d5135a4e02d460029",

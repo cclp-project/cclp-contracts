@@ -2,6 +2,7 @@ let FiatToken = artifacts.require("./FiatToken.sol");
 let MasterMinter = artifacts.require("./MasterMinter.sol");
 let Blacklistable = artifacts.require("./Blacklistable.sol");
 
+
 let Types = artifacts.require("./Types.sol");
 let rolesAddress = require("./roles_address.js");
 

@@ -75,6 +75,38 @@ contract("FiatToken Positive", accounts => {
         await masterMinter.removeMinter(accounts[5], {from: accounts[3]})
         assert.equal(await masterMinter.isMinter(accounts[5]), false);
     });
+
+    /* transerReserve */
+
+    it("token supply must increese if a minter reserve increese", async()=>{
+        let oldTotalSupply = await instance.totalSupply();
+        console.log("oldTotalSupply:"+oldTotalSupply);
+        let oldAccount0Reserve = await instance.minterReserve(accounts[0]);
+        console.log("oldAccount0Reserve"+oldAccount0Reserve);
+        await instance.mint(accounts[5],100,{from:accounts[0]});
+        let currentTotalSupply = await instance.totalSupply();
+        let currentAccount0Reserve = await instance.minterReserve(accounts[0]);
+        console.log("currentTotalSupply:"+currentTotalSupply);
+        console.log("currentAccount0Reserve:"+currentAccount0Reserve)
+        assert.isTrue((currentTotalSupply-oldTotalSupply)==(currentAccount0Reserve-oldAccount0Reserve));
+        assert.equal(100,currentTotalSupply-oldTotalSupply);
+        assert.equal(100,currentAccount0Reserve-oldAccount0Reserve);
+    });
+
+    it("in transferReserve, reserve of account from should decrease and increase in account to", async () => {
+        await instance.mint(accounts[7],100, {from: accounts[0]});
+        let oldAccount0Reserve = await instance.minterReserve(accounts[0]);//minter 0 reserve
+        await masterMinter.addMinter(accounts[9], {from: accounts[3]});
+        let oldAccount9Reserve = await instance.minterReserve(accounts[9]);//minter 9 reserve
+        await instance.transferReserve(accounts[0],accounts[9],100, {from: accounts[3]});
+        let currentAccount0Reserve = await instance.minterReserve(accounts[0]);//minter 0 reserve
+        let currentAccount9Reserve = await instance.minterReserve(accounts[9]);//minter 9 reserve
+        let expectedAccount9Increased = oldAccount9Reserve+100;
+        let expectedAccount0Decreased = oldAccount0Reserve-100;
+        assert.equal(currentAccount0Reserve.toString(10) , expectedAccount0Decreased.toString(10).replace(/^0+/,""));
+        assert.equal(currentAccount9Reserve.toString(10), expectedAccount9Increased.toString(10).replace(/^0+/,""));
+    });
+
     
 })
 

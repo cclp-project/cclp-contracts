@@ -1,8 +1,9 @@
 pragma solidity ^0.5.2;
 
 import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol";
-import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Burnable.sol";
+import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
+import '@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol';
 import "@openzeppelin/upgrades/contracts/Initializable.sol";
 import  "./Types.sol";
 import "./MasterMinter.sol";
@@ -15,7 +16,8 @@ import "./Pausable.sol";
 * @title FiatToken contract
 * @dev This sontact was meant to work as a stable coin with upgradeability support.
 */
-contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable, Pausable{
+contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
+	using SafeMath for uint256;
 
 	Blacklistable public blacklister;
 	MasterMinter public masterMinter;
@@ -56,7 +58,7 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable, Pausable{
 	function () external payable {
 		revert();
 	}
-	
+
     /**
      * @dev Function to mint tokens
      * @param to The address that will receive the minted tokens.
@@ -65,11 +67,30 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable, Pausable{
      */
     function mint(address to, uint256 value) public onlyMinter returns (bool) {
         _mint(to, value);
-        return true;
+		bool mintedReturn = _increaseReserve(msg.sender, value);
+		if( ! mintedReturn){
+			revert("Minter Reserve can't be updated");
+		}
+		return true;
     }
 
+	/**
+	* @dev burnFrom is allowed only for a minter.
+	* @param to : address
+	* @param value : uint256
+	*/
+	function burnFrom(address to, uint256 value) public onlyMinter {
+		require(balanceOf(to)>=value, "User Account does not have enough funds");
+		_burn(to, value);
+		bool burnedReturn = _decreaseReserve(msg.sender,value);
+		if( !  burnedReturn){
+			revert("Minter Reserve can't be updated");
+		}
+	}
+
+
 	modifier onlyMinter() {
-        require(masterMinter.isMinter(msg.sender),"Only Minter accounts can mint()");
+        require(masterMinter.isMinter(msg.sender),"Only Minter accounts can do that");
         _;
     }
 
@@ -141,5 +162,44 @@ contract FiatToken is Ownable, ERC20Detailed,ERC20Burnable, Pausable{
         uint8 newSize
     );
 
+	mapping (address => uint256) private _mintersReserve;
+
+	function _increaseReserve(address minter, uint256 amount) internal returns (bool) {
+		_mintersReserve[minter] = _mintersReserve[minter].add(amount);
+		emit MinterReserveUpdate(minter,amount,true);
+		return true;
+	}
+
+	function _decreaseReserve(address minter, uint256 value) internal returns (bool) {
+		require(value<=_mintersReserve[minter], "Value to reduce from minter reserve is upper than his reserve");
+		_mintersReserve[minter] = _mintersReserve[minter].sub(value);
+		emit MinterReserveUpdate(minter,value,false);
+		return true;
+	}
+
+	function minterReserve(address minter) public view returns(uint256){
+		require(masterMinter.isMinter(minter), "Account entered is not a minter");
+		return _mintersReserve[minter];
+	}
+
+    /**
+     * @dev Throws if called by any account other than the masterMinter
+    */
+    modifier onlyMasterMinter() {
+        require(msg.sender == masterMinter.getMasterMinter(), "masterMinter address needed");
+        _;
+    }
+
+	function transferReserve(address from,address to, uint256 amount) public onlyMasterMinter returns (bool) {
+		require(masterMinter.isMinter(to), "Account entered is not a minter");
+		require(minterReserve(from)>=amount, "Reserve of minter is lower than amount to transfer");
+		return _increaseReserve(to,amount) && _decreaseReserve(from,amount);
+	}
+
+	event MinterReserveUpdate(
+		address minter,
+		uint256 value,
+		bool increase
+	);
 
 }

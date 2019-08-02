@@ -40,6 +40,7 @@ contract MasterMinter is Ownable, MinterRole {
         _addMinter(account);
     }
 
+
     /**
      * @dev remobe a minter address, only the contract Owner can do that
     */
@@ -56,4 +57,7 @@ contract MasterMinter is Ownable, MinterRole {
         emit MasterMinterChanged(masterMinter);
     }
 
+    function getMasterMinter() public view returns (address) {
+        return masterMinter;
+    }
 }
