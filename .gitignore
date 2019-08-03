@@ -7,4 +7,5 @@ zos.dev-*.json
 .zos*
 .openzeppelin/.session
 .openzeppelin/.dev-*
+.openzeppelin/dev-*
 .history
