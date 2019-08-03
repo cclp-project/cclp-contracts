@@ -10,14 +10,14 @@
     "absolutePath": "contracts/Types.sol",
     "exportedSymbols": {
       "Types": [
-        2016
+        2076
       ]
     },
-    "id": 2017,
+    "id": 2077,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2007,
+        "id": 2067,
         "literals": [
           "solidity",
           "^",
@@ -30,9 +30,9 @@
       {
         "absolutePath": "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol",
         "file": "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol",
-        "id": 2008,
+        "id": 2068,
         "nodeType": "ImportDirective",
-        "scope": 2017,
+        "scope": 2077,
         "sourceUnit": 341,
         "src": "24:78:13",
         "symbolAliases": [],
@@ -44,23 +44,23 @@
         "contractKind": "library",
         "documentation": "@dev Code based on https://github.com/saurfang/ipfs-multihash-on-solidity",
         "fullyImplemented": true,
-        "id": 2016,
+        "id": 2076,
         "linearizedBaseContracts": [
-          2016
+          2076
         ],
         "name": "Types",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "Types.Multihash",
-            "id": 2015,
+            "id": 2075,
             "members": [
               {
                 "constant": false,
-                "id": 2010,
+                "id": 2070,
                 "name": "digest",
                 "nodeType": "VariableDeclaration",
-                "scope": 2015,
+                "scope": 2075,
                 "src": "230:14:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -69,7 +69,7 @@
                   "typeString": "bytes32"
                 },
                 "typeName": {
-                  "id": 2009,
+                  "id": 2069,
                   "name": "bytes32",
                   "nodeType": "ElementaryTypeName",
                   "src": "230:7:13",
@@ -83,10 +83,10 @@
               },
               {
                 "constant": false,
-                "id": 2012,
+                "id": 2072,
                 "name": "hashFunction",
                 "nodeType": "VariableDeclaration",
-                "scope": 2015,
+                "scope": 2075,
                 "src": "255:18:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -95,7 +95,7 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 2011,
+                  "id": 2071,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
                   "src": "255:5:13",
@@ -109,10 +109,10 @@
               },
               {
                 "constant": false,
-                "id": 2014,
+                "id": 2074,
                 "name": "size",
                 "nodeType": "VariableDeclaration",
-                "scope": 2015,
+                "scope": 2075,
                 "src": "283:10:13",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -121,7 +121,7 @@
                   "typeString": "uint8"
                 },
                 "typeName": {
-                  "id": 2013,
+                  "id": 2073,
                   "name": "uint8",
                   "nodeType": "ElementaryTypeName",
                   "src": "283:5:13",
@@ -136,12 +136,12 @@
             ],
             "name": "Multihash",
             "nodeType": "StructDefinition",
-            "scope": 2016,
+            "scope": 2076,
             "src": "204:96:13",
             "visibility": "public"
           }
         ],
-        "scope": 2017,
+        "scope": 2077,
         "src": "185:118:13"
       }
     ],

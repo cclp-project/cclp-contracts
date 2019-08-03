@@ -307,10 +307,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2034,
-                        2035
+                        2094,
+                        2095
                       ],
-                      "referencedDeclaration": 2034,
+                      "referencedDeclaration": 2094,
                       "src": "607:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -533,10 +533,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2034,
-                        2035
+                        2094,
+                        2095
                       ],
-                      "referencedDeclaration": 2034,
+                      "referencedDeclaration": 2094,
                       "src": "925:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -835,10 +835,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2034,
-                        2035
+                        2094,
+                        2095
                       ],
-                      "referencedDeclaration": 2034,
+                      "referencedDeclaration": 2094,
                       "src": "1288:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1218,10 +1218,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2034,
-                        2035
+                        2094,
+                        2095
                       ],
-                      "referencedDeclaration": 2034,
+                      "referencedDeclaration": 2094,
                       "src": "1543:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -1444,10 +1444,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        2034,
-                        2035
+                        2094,
+                        2095
                       ],
-                      "referencedDeclaration": 2034,
+                      "referencedDeclaration": 2094,
                       "src": "1816:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",

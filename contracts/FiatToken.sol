@@ -41,7 +41,7 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 		address owner) public initializer  {
 		ERC20Detailed.initialize(name,symbol,decimals);
  		masterMinter = _masterMinter;
-		emit InitializationLog("After Master Minter initialization");
+		emit InitializationLog("After Master Minter Module setting");
 		Pausable.initialize(_pauserRole);
 		emit InitializationLog("After Initialize Pausable");
 		blacklister = _blacklister;
@@ -195,6 +195,30 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 		require(minterReserve(from)>=amount, "Reserve of minter is lower than amount to transfer");
 		return _increaseReserve(to,amount) && _decreaseReserve(from,amount);
 	}
+
+	function getMasterMinterModuleAddress() public view returns (address) {
+		return address(masterMinter);
+	}
+
+	function getBlacklistModuleAddress() public view returns (address) {
+		return address(blacklister);
+	}
+
+	function getPauserRoleAddress() public view returns (address) {
+		return pauserRole;
+	}
+
+	function setMasterMinterModule(MasterMinter _masterMinter) public onlyOwner {
+		masterMinter = _masterMinter;
+		emit InitializationLog("After Master Minter Module setting");
+	}
+
+	function setBlackListModule(Blacklistable _blacklister) public onlyOwner  {
+		blacklister = _blacklister;
+		emit InitializationLog("After Black Lister setting");
+	}
+
+
 
 	event MinterReserveUpdate(
 		address minter,
