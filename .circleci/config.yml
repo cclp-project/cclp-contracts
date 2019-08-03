@@ -31,7 +31,7 @@ jobs:
 
       - run:
           name: code-coverage
-          command: bash <(curl -s https://codecov.io/bash)
+          command: npm run coverage
 
       - save_cache:
           key: dependency-cache-v1.1.1-{{ checksum "package.json" }}
