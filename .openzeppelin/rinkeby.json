@@ -237,11 +237,11 @@
       }
     },
     "FiatToken": {
-      "address": "0xd62eDFCc52E70fF5C85B92cE6726957A53Ef0525",
-      "constructorCode": "608060405234801561001057600080fd5b506132c1806100206000396000f3fe",
-      "bodyBytecodeHash": "bddda61b87e0618ea11c390774303982253fe9359995e145c819f5030bbca5d3",
-      "localBytecodeHash": "c4489213a26152d6b181a61e9b1850f38699c2551872f0859beaae8c73b9906a",
-      "deployedBytecodeHash": "c4489213a26152d6b181a61e9b1850f38699c2551872f0859beaae8c73b9906a",
+      "address": "0xF48573dF180CD06f58886b27d34791A953fC3519",
+      "constructorCode": "608060405234801561001057600080fd5b50613242806100206000396000f3fe",
+      "bodyBytecodeHash": "2737a459588c145c54a8b8ce3f799819a4a2cef951fed752599fbf038d1cab2d",
+      "localBytecodeHash": "d893280b4459376608c8c4a1794bd64429c2b942003690bae27a8719f965a6a5",
+      "deployedBytecodeHash": "d893280b4459376608c8c4a1794bd64429c2b942003690bae27a8719f965a6a5",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -281,30 +281,12 @@
           "label": "mapping(key => uint256)",
           "kind": "mapping"
         },
-        "t_struct<Types.Multihash>": {
-          "id": "t_struct<Types.Multihash>",
-          "kind": "struct",
-          "label": "Types.Multihash",
-          "members": [
-            {
-              "label": "digest",
-              "astId": 2070,
-              "type": "t_bytes32",
-              "src": "230:14:13"
-            },
-            {
-              "label": "hashFunction",
-              "astId": 2072,
-              "type": "t_uint8",
-              "src": "255:18:13"
-            },
-            {
-              "label": "size",
-              "astId": 2074,
-              "type": "t_uint8",
-              "src": "283:10:13"
-            }
-          ]
+        "t_array:2<t_uint256>": {
+          "id": "t_array:2<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "2",
+          "kind": "array",
+          "label": "uint256[2]"
         },
         "t_bytes32": {
           "id": "t_bytes32",
@@ -421,7 +403,7 @@
           "contract": "Pausable",
           "path": "contracts/Pausable.sol",
           "label": "pauserRole",
-          "astId": 1947,
+          "astId": 1916,
           "type": "t_address",
           "src": "259:18:12"
         },
@@ -429,7 +411,7 @@
           "contract": "Pausable",
           "path": "contracts/Pausable.sol",
           "label": "_paused",
-          "astId": 1949,
+          "astId": 1918,
           "type": "t_bool",
           "src": "280:20:12"
         },
@@ -437,33 +419,49 @@
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "blacklister",
-          "astId": 1220,
+          "astId": 1219,
           "type": "t_address",
-          "src": "746:32:9"
+          "src": "723:32:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "masterMinter",
-          "astId": 1222,
+          "astId": 1221,
           "type": "t_address",
-          "src": "781:32:9"
+          "src": "758:32:9"
+        },
+        {
+          "contract": "FiatToken",
+          "path": "contracts/FiatToken.sol",
+          "label": "gap_ex_tos_struct",
+          "astId": 1225,
+          "type": "t_array:2<t_uint256>",
+          "src": "833:36:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "toSDocument",
-          "astId": 1478,
-          "type": "t_struct<Types.Multihash>",
-          "src": "3922:34:9"
+          "astId": 1227,
+          "type": "t_bytes32",
+          "src": "873:27:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "_mintersReserve",
-          "astId": 1545,
+          "astId": 1231,
           "type": "t_mapping<t_uint256>",
-          "src": "4586:52:9"
+          "src": "903:52:9"
+        },
+        {
+          "contract": "FiatToken",
+          "path": "contracts/FiatToken.sol",
+          "label": "______gap",
+          "astId": 1724,
+          "type": "t_array:50<t_uint256>",
+          "src": "6429:21:9"
         }
       ],
       "warnings": {
@@ -472,17 +470,66 @@
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
         "uninitializedBaseContracts": [],
-        "storageUncheckedVars": [
+        "storageUncheckedVars": [],
+        "storageDiff": [
           {
-            "contract": "FiatToken",
-            "path": "contracts/FiatToken.sol",
-            "label": "toSDocument",
-            "astId": 1478,
-            "type": "t_struct<Types.Multihash>",
-            "src": "3922:34:9"
+            "action": "replace",
+            "updated": {
+              "index": 17,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "gap_ex_tos_struct",
+              "astId": 1225,
+              "type": "t_array:2<t_uint256>",
+              "src": "833:36:9"
+            },
+            "original": {
+              "index": 17,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "toSDocument",
+              "astId": 1478,
+              "type": "t_struct<Types.Multihash>",
+              "src": "3922:34:9"
+            }
+          },
+          {
+            "action": "insert",
+            "updated": {
+              "index": 18,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "toSDocument",
+              "astId": 1227,
+              "type": "t_bytes32",
+              "src": "873:27:9"
+            }
+          },
+          {
+            "action": "delete",
+            "original": {
+              "index": 19,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "message",
+              "astId": 1757,
+              "type": "t_string",
+              "src": "6686:14:9"
+            }
+          },
+          {
+            "action": "append",
+            "updated": {
+              "index": 20,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "______gap",
+              "astId": 1724,
+              "type": "t_array:50<t_uint256>",
+              "src": "6429:21:9"
+            }
           }
-        ],
-        "storageDiff": []
+        ]
       }
     }
   },
@@ -510,7 +557,7 @@
       {
         "address": "0x5682911Ee63e9f05895BA1f31578E5D00Ee3e8F2",
         "version": "1.0.0",
-        "implementation": "0xd62eDFCc52E70fF5C85B92cE6726957A53Ef0525",
+        "implementation": "0xF48573dF180CD06f58886b27d34791A953fC3519",
         "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
         "kind": "Upgradeable"
       }
