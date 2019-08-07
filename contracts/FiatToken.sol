@@ -61,7 +61,7 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 	* @dev Just to be sure at all
 	*/
 	function () external payable {
-		revert();
+		revert("This contract can not handle Ether");
 	}
 
     /**
