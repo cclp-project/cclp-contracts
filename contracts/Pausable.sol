@@ -59,4 +59,8 @@ contract Pausable is Initializable , Ownable {
 	function isPaused() public view returns(bool){
 		return _paused;
 	}
+
+	function getPauserRoleAddress() public view returns (address) {
+		return pauserRole;
+	}
 }

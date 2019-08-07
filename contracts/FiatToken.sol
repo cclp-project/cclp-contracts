@@ -138,9 +138,7 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
     }
 
 
-	function setToSDocument(
-		bytes32 _hash) public onlyOwner
-	{
+	function setToSDocument( bytes32 _hash ) public onlyOwner {
 		toSDocument = _hash;
 		emit ToSChanged(_hash);
 	}
@@ -197,10 +195,6 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 
 	function getBlacklistModuleAddress() public view returns (address) {
 		return address(blacklister);
-	}
-
-	function getPauserRoleAddress() public view returns (address) {
-		return pauserRole;
 	}
 
 	function setMasterMinterModule(MasterMinter _masterMinter) public onlyOwner {
