@@ -5,7 +5,6 @@ import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol
 import "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol";
 import '@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol';
 import "@openzeppelin/upgrades/contracts/Initializable.sol";
-import  "./Types.sol";
 import "./MasterMinter.sol";
 import "./Blacklistable.sol";
 import "./Pausable.sol";
@@ -21,6 +20,12 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 
 	Blacklistable public blacklister;
 	MasterMinter public masterMinter;
+
+	/* To keep previous storage layaut */
+	uint256[2] private gap_ex_tos_struct;
+
+	bytes32 private toSDocument;
+	mapping (address => uint256) private _mintersReserve;
 
 	/**
 	* @dev this function is needed by support uppgradeability
@@ -132,37 +137,27 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
         _;
     }
 
-	Types.Multihash public toSDocument;
 
 	function setToSDocument(
-		bytes32 digest,
-		uint8 hashFuntion,
-		uint8 size ) public onlyOwner
+		bytes32 _hash) public onlyOwner
 	{
-		bytes32 oldDigest = toSDocument.digest;
-		uint8 oldHashFunction = toSDocument.hashFunction;
-		uint8 oldSize = toSDocument.size;
+		toSDocument = _hash;
+		emit ToSChanged(_hash);
+	}
 
-		toSDocument = Types.Multihash(digest,hashFuntion,size);
-		emit MultihashChanged(
-			oldDigest,oldHashFunction,oldSize,
-			digest, hashFuntion, size);
+	function setToSDocument() public view returns(bytes32){
+		return toSDocument;
 	}
 
 	event InitializationLog(
         string message
     );
 
-	event MultihashChanged(
-        bytes32 oldDigest,
-		uint8 oldHashFunction,
-		uint8 oldSize,
-        bytes32 newDigest,
-        uint8 newHashFunction,
-        uint8 newSize
+	event ToSChanged(
+        bytes32 hash
     );
 
-	mapping (address => uint256) private _mintersReserve;
+
 
 	function _increaseReserve(address minter, uint256 amount) internal returns (bool) {
 		_mintersReserve[minter] = _mintersReserve[minter].add(amount);
@@ -225,5 +220,8 @@ contract FiatToken is Ownable, ERC20Detailed, ERC20, Pausable {
 		uint256 value,
 		bool increase
 	);
+
+	// Reserved storage space to allow for layout changes in the future.
+	uint256[50] ______gap;
 
 }
