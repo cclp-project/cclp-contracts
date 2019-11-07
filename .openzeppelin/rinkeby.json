@@ -103,11 +103,11 @@
       }
     },
     "MasterMinter": {
-      "address": "0xDE3c832A2532A073F5960ad2c3bF0908F2d682cE",
-      "constructorCode": "608060405234801561001057600080fd5b50610db3806100206000396000f3fe",
-      "bodyBytecodeHash": "98970091f6f14c79500ab46b609d7239824d1aabc663d6401a19573a06b72e72",
-      "localBytecodeHash": "7df9c9064b75f0edceaf59ef1fea2196b7be1777f6d5c4d0bee1fca7348488e5",
-      "deployedBytecodeHash": "7df9c9064b75f0edceaf59ef1fea2196b7be1777f6d5c4d0bee1fca7348488e5",
+      "address": "0x80775f5f86A23CcAdD6640c486e3f60BF70Ea437",
+      "constructorCode": "608060405234801561001057600080fd5b50610de2806100206000396000f3fe",
+      "bodyBytecodeHash": "5a56eb3842e00402678f59cbfd8b0261a9ae6dcb134e90bdf6fbc6147669759a",
+      "localBytecodeHash": "81e0a6f77cf01bf16da12e3a28c7f43f9880cd2e7861a595e9720817f6bff28f",
+      "deployedBytecodeHash": "81e0a6f77cf01bf16da12e3a28c7f43f9880cd2e7861a595e9720817f6bff28f",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -156,41 +156,41 @@
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 1246,
+          "astId": 989,
           "type": "t_bool",
-          "src": "757:24:10"
+          "src": "757:24:7"
         },
         {
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 1248,
+          "astId": 991,
           "type": "t_bool",
-          "src": "876:25:10"
+          "src": "876:25:7"
         },
         {
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 1304,
+          "astId": 1047,
           "type": "t_array:50<t_uint256>",
-          "src": "1951:29:10"
+          "src": "1951:29:7"
         },
         {
           "contract": "Ownable",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
           "label": "_owner",
-          "astId": 566,
+          "astId": 347,
           "type": "t_address",
-          "src": "317:22:5"
+          "src": "317:22:3"
         },
         {
           "contract": "Ownable",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
           "label": "______gap",
-          "astId": 677,
+          "astId": 458,
           "type": "t_array:50<t_uint256>",
-          "src": "2277:29:5"
+          "src": "2277:29:3"
         },
         {
           "contract": "MinterRole",
@@ -212,9 +212,9 @@
           "contract": "MasterMinter",
           "path": "contracts/MasterMinter.sol",
           "label": "masterMinter",
-          "astId": 1785,
+          "astId": 1715,
           "type": "t_address",
-          "src": "528:27:13"
+          "src": "528:27:10"
         }
       ],
       "warnings": {
@@ -222,154 +222,26 @@
         "hasSelfDestruct": false,
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
-      }
-    },
-    "MasterPauser": {
-      "address": "0xb8E0fA795Ef366d1c8Cd48492c9c8Fc317cb4618",
-      "constructorCode": "608060405234801561001057600080fd5b5061103e806100206000396000f3fe",
-      "bodyBytecodeHash": "3dc68f08943e2a8f63f94fc1605db0075b39c4bf284bbd592c26fb364c6fed90",
-      "localBytecodeHash": "ef551148d2d9a4d1d8b3cb2dbd6c5ca7d53291b0661b73e3ca18a0fd16c9feb9",
-      "deployedBytecodeHash": "ef551148d2d9a4d1d8b3cb2dbd6c5ca7d53291b0661b73e3ca18a0fd16c9feb9",
-      "types": {
-        "t_bool": {
-          "id": "t_bool",
-          "kind": "elementary",
-          "label": "bool"
-        },
-        "t_uint256": {
-          "id": "t_uint256",
-          "kind": "elementary",
-          "label": "uint256"
-        },
-        "t_array:50<t_uint256>": {
-          "id": "t_array:50<t_uint256>",
-          "valueType": "t_uint256",
-          "length": "50",
-          "kind": "array",
-          "label": "uint256[50]"
-        },
-        "t_address": {
-          "id": "t_address",
-          "kind": "elementary",
-          "label": "address"
-        },
-        "t_struct<Roles.Role>": {
-          "id": "t_struct<Roles.Role>",
-          "kind": "struct",
-          "label": "Roles.Role",
-          "members": [
-            {
-              "label": "bearer",
-              "astId": 5,
-              "type": "t_mapping<t_bool>",
-              "src": "150:32:0"
-            }
-          ]
-        },
-        "t_mapping<t_bool>": {
-          "id": "t_mapping<t_bool>",
-          "valueType": "t_bool",
-          "label": "mapping(key => bool)",
-          "kind": "mapping"
-        }
-      },
-      "storage": [
-        {
-          "contract": "Initializable",
-          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
-          "label": "initialized",
-          "astId": 1246,
-          "type": "t_bool",
-          "src": "757:24:10"
-        },
-        {
-          "contract": "Initializable",
-          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
-          "label": "initializing",
-          "astId": 1248,
-          "type": "t_bool",
-          "src": "876:25:10"
-        },
-        {
-          "contract": "Initializable",
-          "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
-          "label": "______gap",
-          "astId": 1304,
-          "type": "t_array:50<t_uint256>",
-          "src": "1951:29:10"
-        },
-        {
-          "contract": "Ownable",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
-          "label": "_owner",
-          "astId": 566,
-          "type": "t_address",
-          "src": "317:22:5"
-        },
-        {
-          "contract": "Ownable",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
-          "label": "______gap",
-          "astId": 677,
-          "type": "t_array:50<t_uint256>",
-          "src": "2277:29:5"
-        },
-        {
-          "contract": "PauserRole",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/access/roles/PauserRole.sol",
-          "label": "_pausers",
-          "astId": 231,
-          "type": "t_struct<Roles.Role>",
-          "src": "286:27:2"
-        },
-        {
-          "contract": "PauserRole",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/access/roles/PauserRole.sol",
-          "label": "______gap",
-          "astId": 330,
-          "type": "t_array:50<t_uint256>",
-          "src": "1096:29:2"
-        },
-        {
-          "contract": "Pausable",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/lifecycle/Pausable.sol",
-          "label": "_paused",
-          "astId": 349,
-          "type": "t_bool",
-          "src": "367:20:3"
-        },
-        {
-          "contract": "Pausable",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/lifecycle/Pausable.sol",
-          "label": "______gap",
-          "astId": 430,
-          "type": "t_array:50<t_uint256>",
-          "src": "1444:29:3"
-        },
-        {
-          "contract": "MasterPauser",
-          "path": "contracts/MasterPauser.sol",
-          "label": "masterPauser",
-          "astId": 1901,
-          "type": "t_address",
-          "src": "523:27:14"
-        }
-      ],
-      "warnings": {
-        "hasConstructor": false,
-        "hasSelfDestruct": false,
-        "hasDelegateCall": false,
-        "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "MinterRole",
+            "path": "@openzeppelin/contracts-ethereum-package/contracts/access/roles/MinterRole.sol",
+            "label": "_minters",
+            "astId": 112,
+            "type": "t_struct<Roles.Role>",
+            "src": "286:27:1"
+          }
+        ],
+        "storageDiff": []
       }
     },
     "FiatToken": {
-      "address": "0xbf936814084E47962D02ADC664d7FADbBed18d50",
-      "constructorCode": "608060405234801561001057600080fd5b50612338806100206000396000f3fe",
-      "bodyBytecodeHash": "f56bc60b88bc12e5baa6c0545606a4eccc3735d7c13e90213db494fb674115bd",
-      "localBytecodeHash": "6813e62f473bc6c91a7af68492c64e7815af032346ada7113d309cb4e2afd394",
-      "deployedBytecodeHash": "6813e62f473bc6c91a7af68492c64e7815af032346ada7113d309cb4e2afd394",
+      "address": "0xF48573dF180CD06f58886b27d34791A953fC3519",
+      "constructorCode": "608060405234801561001057600080fd5b50613242806100206000396000f3fe",
+      "bodyBytecodeHash": "2737a459588c145c54a8b8ce3f799819a4a2cef951fed752599fbf038d1cab2d",
+      "localBytecodeHash": "d893280b4459376608c8c4a1794bd64429c2b942003690bae27a8719f965a6a5",
+      "deployedBytecodeHash": "d893280b4459376608c8c4a1794bd64429c2b942003690bae27a8719f965a6a5",
       "types": {
         "t_bool": {
           "id": "t_bool",
@@ -409,30 +281,12 @@
           "label": "mapping(key => uint256)",
           "kind": "mapping"
         },
-        "t_struct<Types.Multihash>": {
-          "id": "t_struct<Types.Multihash>",
-          "kind": "struct",
-          "label": "Types.Multihash",
-          "members": [
-            {
-              "label": "digest",
-              "astId": 2060,
-              "type": "t_bytes32",
-              "src": "230:14:16"
-            },
-            {
-              "label": "hashFunction",
-              "astId": 2062,
-              "type": "t_uint8",
-              "src": "255:18:16"
-            },
-            {
-              "label": "size",
-              "astId": 2064,
-              "type": "t_uint8",
-              "src": "283:10:16"
-            }
-          ]
+        "t_array:2<t_uint256>": {
+          "id": "t_array:2<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "2",
+          "kind": "array",
+          "label": "uint256[2]"
         },
         "t_bytes32": {
           "id": "t_bytes32",
@@ -445,145 +299,169 @@
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "initialized",
-          "astId": 1246,
+          "astId": 989,
           "type": "t_bool",
-          "src": "757:24:10"
+          "src": "757:24:7"
         },
         {
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "initializing",
-          "astId": 1248,
+          "astId": 991,
           "type": "t_bool",
-          "src": "876:25:10"
+          "src": "876:25:7"
         },
         {
           "contract": "Initializable",
           "path": "@openzeppelin/upgrades/contracts/Initializable.sol",
           "label": "______gap",
-          "astId": 1304,
+          "astId": 1047,
           "type": "t_array:50<t_uint256>",
-          "src": "1951:29:10"
+          "src": "1951:29:7"
         },
         {
           "contract": "Ownable",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
           "label": "_owner",
-          "astId": 566,
+          "astId": 347,
           "type": "t_address",
-          "src": "317:22:5"
+          "src": "317:22:3"
         },
         {
           "contract": "Ownable",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/ownership/Ownable.sol",
           "label": "______gap",
-          "astId": 677,
+          "astId": 458,
           "type": "t_array:50<t_uint256>",
-          "src": "2277:29:5"
+          "src": "2277:29:3"
         },
         {
           "contract": "ERC20Detailed",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol",
           "label": "_name",
-          "astId": 1116,
+          "astId": 859,
           "type": "t_string",
-          "src": "397:20:8"
+          "src": "397:20:5"
         },
         {
           "contract": "ERC20Detailed",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol",
           "label": "_symbol",
-          "astId": 1118,
+          "astId": 861,
           "type": "t_string",
-          "src": "423:22:8"
+          "src": "423:22:5"
         },
         {
           "contract": "ERC20Detailed",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol",
           "label": "_decimals",
-          "astId": 1120,
+          "astId": 863,
           "type": "t_uint8",
-          "src": "451:23:8"
+          "src": "451:23:5"
         },
         {
           "contract": "ERC20Detailed",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Detailed.sol",
           "label": "______gap",
-          "astId": 1172,
+          "astId": 915,
           "type": "t_array:50<t_uint256>",
-          "src": "1112:29:8"
+          "src": "1112:29:5"
         },
         {
           "contract": "ERC20",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol",
           "label": "_balances",
-          "astId": 694,
+          "astId": 475,
           "type": "t_mapping<t_uint256>",
-          "src": "767:46:6"
+          "src": "767:46:4"
         },
         {
           "contract": "ERC20",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol",
           "label": "_allowed",
-          "astId": 700,
+          "astId": 481,
           "type": "t_mapping<t_uint256>",
-          "src": "820:66:6"
+          "src": "820:66:4"
         },
         {
           "contract": "ERC20",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol",
           "label": "_totalSupply",
-          "astId": 702,
+          "astId": 483,
           "type": "t_uint256",
-          "src": "893:28:6"
+          "src": "893:28:4"
         },
         {
           "contract": "ERC20",
           "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20.sol",
           "label": "______gap",
-          "astId": 1067,
+          "astId": 848,
           "type": "t_array:50<t_uint256>",
-          "src": "7729:29:6"
+          "src": "7729:29:4"
         },
         {
-          "contract": "ERC20Burnable",
-          "path": "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Burnable.sol",
-          "label": "______gap",
-          "astId": 1105,
-          "type": "t_array:50<t_uint256>",
-          "src": "794:29:7"
+          "contract": "Pausable",
+          "path": "contracts/Pausable.sol",
+          "label": "pauserRole",
+          "astId": 1916,
+          "type": "t_address",
+          "src": "259:18:12"
+        },
+        {
+          "contract": "Pausable",
+          "path": "contracts/Pausable.sol",
+          "label": "_paused",
+          "astId": 1918,
+          "type": "t_bool",
+          "src": "280:20:12"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "blacklister",
-          "astId": 1471,
+          "astId": 1219,
           "type": "t_address",
-          "src": "646:32:12"
+          "src": "723:32:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "masterMinter",
-          "astId": 1473,
+          "astId": 1221,
           "type": "t_address",
-          "src": "681:32:12"
+          "src": "758:32:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
-          "label": "pauser",
-          "astId": 1475,
-          "type": "t_address",
-          "src": "716:26:12"
+          "label": "gap_ex_tos_struct",
+          "astId": 1225,
+          "type": "t_array:2<t_uint256>",
+          "src": "833:36:9"
         },
         {
           "contract": "FiatToken",
           "path": "contracts/FiatToken.sol",
           "label": "toSDocument",
-          "astId": 1702,
-          "type": "t_struct<Types.Multihash>",
-          "src": "3633:34:12"
+          "astId": 1227,
+          "type": "t_bytes32",
+          "src": "873:27:9"
+        },
+        {
+          "contract": "FiatToken",
+          "path": "contracts/FiatToken.sol",
+          "label": "_mintersReserve",
+          "astId": 1231,
+          "type": "t_mapping<t_uint256>",
+          "src": "903:52:9"
+        },
+        {
+          "contract": "FiatToken",
+          "path": "contracts/FiatToken.sol",
+          "label": "______gap",
+          "astId": 1724,
+          "type": "t_array:50<t_uint256>",
+          "src": "6429:21:9"
         }
       ],
       "warnings": {
@@ -591,7 +469,67 @@
         "hasSelfDestruct": false,
         "hasDelegateCall": false,
         "hasInitialValuesInDeclarations": false,
-        "uninitializedBaseContracts": []
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [],
+        "storageDiff": [
+          {
+            "action": "replace",
+            "updated": {
+              "index": 17,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "gap_ex_tos_struct",
+              "astId": 1225,
+              "type": "t_array:2<t_uint256>",
+              "src": "833:36:9"
+            },
+            "original": {
+              "index": 17,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "toSDocument",
+              "astId": 1478,
+              "type": "t_struct<Types.Multihash>",
+              "src": "3922:34:9"
+            }
+          },
+          {
+            "action": "insert",
+            "updated": {
+              "index": 18,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "toSDocument",
+              "astId": 1227,
+              "type": "t_bytes32",
+              "src": "873:27:9"
+            }
+          },
+          {
+            "action": "delete",
+            "original": {
+              "index": 19,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "message",
+              "astId": 1757,
+              "type": "t_string",
+              "src": "6686:14:9"
+            }
+          },
+          {
+            "action": "append",
+            "updated": {
+              "index": 20,
+              "contract": "FiatToken",
+              "path": "contracts/FiatToken.sol",
+              "label": "______gap",
+              "astId": 1724,
+              "type": "t_array:50<t_uint256>",
+              "src": "6429:21:9"
+            }
+          }
+        ]
       }
     }
   },
@@ -610,16 +548,7 @@
       {
         "address": "0x456B85109e595726DBCa9C6ba17Ac0DEde978a8C",
         "version": "1.0.0",
-        "implementation": "0xDE3c832A2532A073F5960ad2c3bF0908F2d682cE",
-        "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
-        "kind": "Upgradeable"
-      }
-    ],
-    "cclp-contracts/MasterPauser": [
-      {
-        "address": "0x3eD0A328AFcCF4df6A992bd2af0A48AE753FC850",
-        "version": "1.0.0",
-        "implementation": "0xb8E0fA795Ef366d1c8Cd48492c9c8Fc317cb4618",
+        "implementation": "0x80775f5f86A23CcAdD6640c486e3f60BF70Ea437",
         "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
         "kind": "Upgradeable"
       }
@@ -628,7 +557,7 @@
       {
         "address": "0x5682911Ee63e9f05895BA1f31578E5D00Ee3e8F2",
         "version": "1.0.0",
-        "implementation": "0xbf936814084E47962D02ADC664d7FADbBed18d50",
+        "implementation": "0xF48573dF180CD06f58886b27d34791A953fC3519",
         "admin": "0x726A759E03DB18047615b7470E4102A987caD499",
         "kind": "Upgradeable"
       }
